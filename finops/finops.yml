@@ -1,0 +1,85 @@
+finops:
+  overview: >
+    Cryptomus operates a percentage-based fee model for payment processing with no fixed
+    monthly subscription for the core merchant API. Costs scale directly with transaction
+    volume. Exchange trading uses a tiered maker/taker model. Internal transfers between
+    Cryptomus users are free.
+  payment_processing:
+    model: percentage_per_transaction
+    standard_commission: '2%'
+    negotiated_minimum: '0.4%'
+    volume_negotiation: true
+    contact_required_for_reduced_rates: true
+    notes: >
+      The 2% standard rate applies to new merchants. Volume-based reduction to as low as
+      0.4% is available by contacting Cryptomus. Specific rates depend on business type,
+      monthly turnover, and integration method.
+  per_currency_customization:
+    enabled: true
+    range_percent: '-99 to 100'
+    description: >
+      Merchants can apply per-cryptocurrency discounts (negative values) or surcharges
+      (positive values) up to 100%, allowing custom pricing per payment method.
+  auto_convert:
+    cost: Free
+    description: >
+      Automatic conversion of incoming cryptocurrency payments to a preferred currency
+      (e.g., BTC to USDT) is provided at no additional charge.
+  internal_transfers:
+    cost: Free
+    description: >
+      Transfers between Personal, Business, and P2P trading wallets within Cryptomus,
+      and payments between Cryptomus users, incur no fees.
+  withdrawals:
+    model: per_transaction_network_fee
+    applies_to: Third-party wallet withdrawals only
+    internal_free: true
+    priority_options:
+      - recommended
+      - economy
+      - high
+      - highest
+    supported_networks_for_priority:
+      - BTC
+      - ETH
+      - POLYGON
+      - BSC
+    description: >
+      Withdrawal fees apply only to transactions sent to external (third-party) wallets.
+      Priority levels are available for BTC, ETH, POLYGON, and BSC networks affecting
+      transaction confirmation speed and cost.
+  trading:
+    model: maker_taker_tiered
+    starting_fee: '0.04%'
+    tiers_by_monthly_volume: true
+    maker_lower_than_taker: true
+    description: >
+      Exchange trading fees start at 0.04% and are tiered based on monthly trading volume.
+      Maker orders (limit orders adding liquidity) pay lower fees than taker orders
+      (market orders consuming liquidity).
+  staking_yields:
+    model: apy_percentage
+    eth: '3%'
+    usdt: '3%'
+    bnb: '3%'
+    dai: '3%'
+    trx: '20%'
+    notes: >
+      Yields represent annual percentage yield (APY). Rates are subject to change.
+      Rewards begin accruing within 6 hours of deposit.
+  p2p_and_onramp:
+    fees: Variable
+    description: >
+      P2P exchange and fiat-to-crypto on-ramp (SEPA/SWIFT) fees vary by method and
+      counterparty. Consult the platform fee pages for current schedules.
+  cost_optimization_tips:
+    - Negotiate commission reduction (2% to 0.4%) based on expected monthly volume before going live
+    - Use auto-convert (free) instead of manual conversion to avoid conversion fees
+    - Use internal Cryptomus wallets for user-to-user settlements to avoid withdrawal fees
+    - Use economy priority for non-urgent BTC/ETH payouts to minimize network fees
+    - Apply accuracy_payment_percent (0-5%) tolerance to reduce failed/partial payment friction without extra cost
+    - Avoid regenerating payout API keys unnecessarily due to 24-hour withdrawal block
+  references:
+    payment_fees: https://cryptomus.com/fees/payment
+    documentation: https://doc.cryptomus.com/
+    processing: https://cryptomus.com/processing

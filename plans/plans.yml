@@ -1,0 +1,79 @@
+plans:
+  - name: Standard Merchant
+    description: Default payment processing plan for new merchants with standard commission rates. Domain verification and merchant moderation required before activation.
+    type: merchant
+    features:
+      - Accept 100+ cryptocurrencies
+      - Invoice creation and management
+      - Static wallets for users
+      - Webhook notifications
+      - QR code generation
+      - Auto-convert incoming payments (free)
+      - Payment accuracy tolerance 0-5%
+      - Recurring payment subscriptions
+      - Refund processing
+      - AML checker
+      - API access
+      - PHP SDK
+    pricing:
+      payment_commission: '2%'
+      reduced_commission: 'Up to 0.4% (by request)'
+      internal_transfers: Free
+      auto_convert: Free
+      p2p_transfers: Free
+    notes: >
+      Commission rates vary based on business type, monthly turnover, and integration method.
+      Merchants can customize commissions per cryptocurrency, applying discounts or surcharges
+      of up to 100%. Contact Cryptomus to negotiate reduced rates based on volume.
+  - name: Enterprise / High Volume
+    description: Negotiated pricing for high-volume merchants with significantly reduced commission rates. Contact Cryptomus to discuss custom terms and conditions.
+    type: merchant
+    features:
+      - All Standard Merchant features
+      - Reduced commission from 2% down to 0.4%
+      - Dedicated account manager
+      - Custom commission structures per currency
+      - Mass payout support
+      - Priority support
+    pricing:
+      payment_commission: 'From 0.4% (negotiated)'
+      contact_required: true
+    notes: >
+      Fill in the contact form at cryptomus.com/fees/payment to be connected with a manager
+      to discuss custom terms based on your business volume and requirements.
+  - name: Trading / Exchange
+    description: Fee tier for users of the Cryptomus spot exchange platform, with maker/taker model and volume-based discounts.
+    type: exchange
+    features:
+      - Spot trading for major crypto pairs
+      - Market and limit orders
+      - Order book access
+      - WebSocket real-time streams
+      - Convert between cryptocurrencies
+      - Broker and market maker programs
+    pricing:
+      trading_fee_from: '0.04%'
+      maker_taker_model: true
+      volume_based_tiers: true
+    notes: >
+      Trading fees are tiered based on monthly turnover. Maker orders (limit orders that add
+      liquidity) incur lower fees than taker orders (market orders that consume liquidity).
+      Broker and Market Maker programs offer additional commission opportunities.
+  - name: Staking
+    description: Passive income plan for users who stake supported cryptocurrencies on the Cryptomus platform.
+    type: staking
+    features:
+      - ETH staking
+      - USDT staking
+      - BNB staking
+      - DAI staking
+      - TRX staking (special rate)
+      - Rewards begin within 6 hours
+    pricing:
+      eth_apy: '3%'
+      usdt_apy: '3%'
+      bnb_apy: '3%'
+      dai_apy: '3%'
+      trx_apy: '20%'
+    notes: >
+      APY rates are subject to change. TRX offers the highest currently advertised yield at 20%.

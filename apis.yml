@@ -1,0 +1,112 @@
+name: Cryptomus
+description: Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Cryptocurrency
+  - Payments
+  - Invoices
+  - Payouts
+  - Exchange Rates
+  - Crypto Gateway
+apis:
+  - name: Cryptomus Merchant Payment API
+    description: REST API for accepting cryptocurrency payments, creating invoices, managing static wallets, processing refunds, and handling payment webhooks for merchant integrations.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://doc.cryptomus.com/
+    baseURL: https://api.cryptomus.com/v1
+    tags:
+      - Payments
+      - Invoices
+      - Webhooks
+      - Cryptocurrency
+    properties:
+      - type: Documentation
+        url: https://doc.cryptomus.com/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/openapi.yml
+    contact:
+      - FN: Cryptomus Support
+        url: https://cryptomus.com/
+        email: ''
+  - name: Cryptomus Payout API
+    description: REST API for creating cryptocurrency payouts, processing mass withdrawals, and transferring funds between personal and business wallets with support for auto-conversion.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://doc.cryptomus.com/
+    baseURL: https://api.cryptomus.com/v1
+    tags:
+      - Payouts
+      - Withdrawals
+      - Cryptocurrency
+    properties:
+      - type: Documentation
+        url: https://doc.cryptomus.com/
+    contact:
+      - FN: Cryptomus Support
+        url: https://cryptomus.com/
+        email: ''
+  - name: Cryptomus Recurring Payments API
+    description: REST API for creating and managing recurring cryptocurrency payment subscriptions with configurable billing periods (weekly, monthly, quarterly) and discount periods.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://doc.cryptomus.com/
+    baseURL: https://api.cryptomus.com/v1
+    tags:
+      - Recurring Payments
+      - Subscriptions
+      - Billing
+      - Cryptocurrency
+    properties:
+      - type: Documentation
+        url: https://doc.cryptomus.com/
+    contact:
+      - FN: Cryptomus Support
+        url: https://cryptomus.com/
+        email: ''
+  - name: Cryptomus Exchange and Market Data API
+    description: REST and WebSocket API for accessing real-time cryptocurrency exchange rates, order books, tickers, trade history, market cap data, and executing spot exchange orders with conversion calculations.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://doc.cryptomus.com/
+    baseURL: https://api.cryptomus.com/v2
+    tags:
+      - Exchange Rates
+      - Market Data
+      - Trading
+      - WebSocket
+      - Cryptocurrency
+    properties:
+      - type: Documentation
+        url: https://doc.cryptomus.com/
+    contact:
+      - FN: Cryptomus Support
+        url: https://cryptomus.com/
+        email: ''
+common:
+  - type: Authentication
+    url: https://doc.cryptomus.com/merchant-api/getting-api-keys
+  - type: Request Format
+    url: https://doc.cryptomus.com/merchant-api/request-format
+  - type: Webhook
+    url: https://doc.cryptomus.com/merchant-api/payments/webhook
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/finops/finops.yml
+  - type: Website
+    url: https://cryptomus.com/
+  - type: Fees
+    url: https://cryptomus.com/fees/payment
+  - type: SDK
+    url: https://doc.cryptomus.com/
+  - type: PrivacyPolicy
+    url: https://cryptomus.com/privacy
+  - type: TermsOfService
+    url: https://cryptomus.com/terms
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
+    email: info@apievangelist.com

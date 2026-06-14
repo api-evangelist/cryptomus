@@ -1,0 +1,55 @@
+rate_limits:
+  notes: >
+    Cryptomus does not publicly document explicit rate limits in their official API documentation
+    as of June 2026. The following reflects known constraints and best practices derived from
+    the public documentation and API behavior.
+  authentication:
+    description: >
+      All API requests require two authentication headers: 'merchant' (UUID) and 'sign'
+      (MD5 hash of base64-encoded request body concatenated with API key). Different API
+      keys are required for payment vs payout operations.
+    payment_api_key: Required for invoice and payment endpoints
+    payout_api_key: Required for payout endpoints; triggers 24-hour withdrawal block when regenerated
+  constraints:
+    invoice_lifetime:
+      min_seconds: 300
+      max_seconds: 43200
+      default_seconds: 3600
+      description: Invoice validity window in seconds (5 minutes to 12 hours)
+    order_id_length:
+      payment_max_chars: 128
+      payout_max_chars: 100
+      recurring_max_chars: 100
+      description: Maximum length of order_id field for idempotency
+    discount_percent:
+      min: -99
+      max: 100
+      description: Discount or surcharge percentage applied to payment amount
+    accuracy_payment_percent:
+      min: 0
+      max: 5
+      description: Acceptable underpayment tolerance percentage
+    memo_ton:
+      max_chars: 30
+      description: TON network memo field maximum length
+    recurring_name:
+      min_chars: 3
+      max_chars: 60
+      description: Name field for recurring payment plans
+    discount_days:
+      min: 1
+      max: 365
+      description: Discount period duration for recurring payments
+  websocket:
+    endpoint: wss://api-ws.cryptomus.com/ws
+    token_validity_seconds: 300
+    token_reuse: First connection only
+    idle_disconnect_seconds: 60
+    recommended_ping_interval_seconds: 50
+    description: WebSocket token is valid for 5 minutes or until first connection. Server disconnects idle clients after 60 seconds; clients must ping every 50 seconds to maintain connection.
+  payout_timing:
+    api_key_regeneration_block_hours: 24
+    description: Generating a new payout API key temporarily blocks withdrawals for 24 hours.
+  webhook:
+    source_ip: 91.227.144.54
+    description: Cryptomus sends webhook notifications from a fixed IP address. Whitelist this IP for webhook security verification.
