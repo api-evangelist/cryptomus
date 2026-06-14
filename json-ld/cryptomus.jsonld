@@ -1,0 +1,65 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "api": "https://pending.schema.org/WebAPI",
+    "hydra": "http://www.w3.org/ns/hydra/core#"
+  },
+  "@type": "WebAPI",
+  "@id": "https://api.cryptomus.com/",
+  "name": "Cryptomus API",
+  "description": "Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.",
+  "url": "https://cryptomus.com/",
+  "documentation": "https://doc.cryptomus.com/",
+  "termsOfService": "https://cryptomus.com/terms",
+  "provider": {
+    "@type": "Organization",
+    "name": "Cryptomus",
+    "url": "https://cryptomus.com/",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "url": "https://cryptomus.com/"
+    }
+  },
+  "category": [
+    "Cryptocurrency",
+    "Payments",
+    "Financial Services",
+    "Payment Gateway"
+  ],
+  "availableChannel": [
+    {
+      "@type": "ServiceChannel",
+      "name": "Merchant Payment API",
+      "description": "REST API for accepting cryptocurrency payments and creating invoices",
+      "serviceUrl": "https://api.cryptomus.com/v1",
+      "availableLanguage": "en"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Payout API",
+      "description": "REST API for creating and managing cryptocurrency payouts",
+      "serviceUrl": "https://api.cryptomus.com/v1",
+      "availableLanguage": "en"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Recurring Payments API",
+      "description": "REST API for managing recurring cryptocurrency payment subscriptions",
+      "serviceUrl": "https://api.cryptomus.com/v1",
+      "availableLanguage": "en"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Exchange and Market Data API",
+      "description": "REST and WebSocket API for cryptocurrency exchange rates and market data",
+      "serviceUrl": "https://api.cryptomus.com/v2",
+      "availableLanguage": "en"
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://cryptomus.com/fees/payment",
+    "description": "Transaction-based fee structure for cryptocurrency payment processing"
+  },
+  "additionalType": "https://schema.org/FinancialService"
+}

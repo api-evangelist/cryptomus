@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/recurring.json",
+  "title": "Cryptomus Recurring Payment Object",
+  "description": "Schema for a Cryptomus recurring payment subscription object",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Recurring payment unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 60,
+      "description": "Subscription name"
+    },
+    "order_id": {
+      "type": ["string", "null"],
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Merchant order identifier"
+    },
+    "amount": {
+      "type": "string",
+      "description": "Payment amount"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "payer_currency": {
+      "type": "string",
+      "description": "Currency the customer pays in"
+    },
+    "payer_amount": {
+      "type": "string",
+      "description": "Amount in payer currency"
+    },
+    "payer_amount_usd": {
+      "type": "string",
+      "description": "Amount in USD equivalent"
+    },
+    "url_callback": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Webhook endpoint for status updates"
+    },
+    "discount_days": {
+      "type": "string",
+      "description": "Introductory discount period in days"
+    },
+    "discount_amount": {
+      "type": "string",
+      "description": "Discount amount in specified currency"
+    },
+    "end_of_discount": {
+      "type": ["string", "null"],
+      "description": "Date when discount period ends"
+    },
+    "period": {
+      "type": "string",
+      "enum": ["weekly", "monthly", "three_month"],
+      "description": "Billing period"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["wait_accept", "active", "cancel_by_merchant", "cancel_by_user"],
+      "description": "Recurring payment status"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Payment page URL"
+    },
+    "last_pay_off": {
+      "type": ["string", "null"],
+      "description": "Timestamp of last payment (UTC+3)"
+    }
+  },
+  "required": ["uuid", "name", "amount", "currency", "period", "status", "url"]
+}

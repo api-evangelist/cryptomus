@@ -27,7 +27,11 @@ apis:
       - type: Documentation
         url: https://doc.cryptomus.com/
       - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/openapi.yml
+        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/openapi/openapi.yml
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
+      - type: Example
+        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
     contact:
       - FN: Cryptomus Support
         url: https://cryptomus.com/
@@ -44,6 +48,10 @@ apis:
     properties:
       - type: Documentation
         url: https://doc.cryptomus.com/
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payout.json
+      - type: Example
+        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-payout.json
     contact:
       - FN: Cryptomus Support
         url: https://cryptomus.com/
@@ -61,6 +69,10 @@ apis:
     properties:
       - type: Documentation
         url: https://doc.cryptomus.com/
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/recurring.json
+      - type: Example
+        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-recurring.json
     contact:
       - FN: Cryptomus Support
         url: https://cryptomus.com/
@@ -96,6 +108,8 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/rate-limits/rate-limits.yml
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/finops/finops.yml
+  - type: JSONLD
+    url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-ld/cryptomus.jsonld
   - type: Website
     url: https://cryptomus.com/
   - type: Fees

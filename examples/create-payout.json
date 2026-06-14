@@ -1,0 +1,39 @@
+{
+  "title": "Create Payout Request Example",
+  "description": "Example request body for creating a Cryptomus cryptocurrency payout",
+  "request": {
+    "method": "POST",
+    "url": "https://api.cryptomus.com/v1/payout",
+    "headers": {
+      "merchant": "YOUR_MERCHANT_UUID",
+      "sign": "MD5(base64_encode(body) + PAYOUT_API_KEY)",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "amount": "50.00",
+      "currency": "USDT",
+      "order_id": "payout-67890",
+      "address": "TRxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "is_subtract": true,
+      "network": "TRC20",
+      "url_callback": "https://yoursite.com/webhook/payout",
+      "priority": "recommended"
+    }
+  },
+  "response": {
+    "state": 0,
+    "result": {
+      "uuid": "b8d6e3f2-9c4e-5a01-b2f3-4d5e6f7a8b9c",
+      "amount": "50.00",
+      "currency": "USDT",
+      "network": "TRC20",
+      "address": "TRxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "txid": null,
+      "status": "process",
+      "is_final": false,
+      "balance": 1250.75,
+      "payer_currency": "USDT",
+      "payer_amount": "50.00"
+    }
+  }
+}

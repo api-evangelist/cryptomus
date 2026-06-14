@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json",
+  "title": "Cryptomus Payment Object",
+  "description": "Schema for a Cryptomus payment invoice object",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Payment invoice UUID"
+    },
+    "order_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Merchant order identifier"
+    },
+    "amount": {
+      "type": "string",
+      "description": "Invoice amount"
+    },
+    "payment_amount": {
+      "type": ["string", "null"],
+      "description": "Amount paid by payer"
+    },
+    "payer_amount": {
+      "type": ["string", "null"],
+      "description": "Amount in payer currency"
+    },
+    "discount_percent": {
+      "type": ["integer", "null"],
+      "minimum": -99,
+      "maximum": 100,
+      "description": "Discount or commission percentage"
+    },
+    "discount": {
+      "type": "string",
+      "description": "Discount amount"
+    },
+    "payer_currency": {
+      "type": ["string", "null"],
+      "description": "Currency the payer used"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Invoice currency code"
+    },
+    "merchant_amount": {
+      "type": ["string", "null"],
+      "description": "Amount credited to merchant after fees"
+    },
+    "network": {
+      "type": ["string", "null"],
+      "description": "Blockchain network code"
+    },
+    "address": {
+      "type": ["string", "null"],
+      "description": "Payment wallet address"
+    },
+    "from": {
+      "type": ["string", "null"],
+      "description": "Sender wallet address"
+    },
+    "txid": {
+      "type": ["string", "null"],
+      "description": "Blockchain transaction ID"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": ["process", "check", "paid", "paid_over", "fail", "wrong_amount", "cancel", "system_fail", "refund_process", "refund_fail", "refund_paid"],
+      "description": "Current payment status"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Payment page URL"
+    },
+    "expired_at": {
+      "type": "integer",
+      "description": "Unix timestamp when invoice expires"
+    },
+    "is_final": {
+      "type": "boolean",
+      "description": "Whether the payment status is final"
+    },
+    "additional_data": {
+      "type": ["string", "null"],
+      "maxLength": 255,
+      "description": "Merchant internal notes"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Invoice creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Invoice last update timestamp"
+    }
+  },
+  "required": ["uuid", "order_id", "amount", "currency", "payment_status", "url", "expired_at", "is_final", "created_at", "updated_at"]
+}

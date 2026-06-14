@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payout.json",
+  "title": "Cryptomus Payout Object",
+  "description": "Schema for a Cryptomus payout object",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Payout unique identifier"
+    },
+    "amount": {
+      "type": "string",
+      "description": "Payout amount in specified currency"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "network": {
+      "type": "string",
+      "description": "Blockchain network code"
+    },
+    "address": {
+      "type": "string",
+      "description": "Recipient wallet address"
+    },
+    "txid": {
+      "type": ["string", "null"],
+      "description": "Blockchain transaction ID (null if pending)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["process", "check", "paid", "fail", "cancel", "system_fail"],
+      "description": "Payout status"
+    },
+    "is_final": {
+      "type": "boolean",
+      "description": "Whether the payout is finalized"
+    },
+    "balance": {
+      "type": "number",
+      "description": "Remaining merchant balance"
+    },
+    "payer_currency": {
+      "type": "string",
+      "description": "Actual cryptocurrency used for payout"
+    },
+    "payer_amount": {
+      "type": "string",
+      "description": "Amount in payer currency"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Payout creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Payout last update timestamp"
+    }
+  },
+  "required": ["uuid", "amount", "currency", "address", "status", "is_final", "balance", "payer_currency", "payer_amount"]
+}

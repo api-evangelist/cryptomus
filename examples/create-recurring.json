@@ -1,0 +1,38 @@
+{
+  "title": "Create Recurring Payment Example",
+  "description": "Example request body for creating a Cryptomus recurring payment subscription",
+  "request": {
+    "method": "POST",
+    "url": "https://api.cryptomus.com/v1/recurrence/create",
+    "headers": {
+      "merchant": "YOUR_MERCHANT_UUID",
+      "sign": "MD5(base64_encode(body) + API_KEY)",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "amount": "9.99",
+      "currency": "USD",
+      "name": "Monthly Pro Subscription",
+      "period": "monthly",
+      "order_id": "sub-11111",
+      "url_callback": "https://yoursite.com/webhook/subscription",
+      "discount_days": 30,
+      "discount_amount": "0.00"
+    }
+  },
+  "response": {
+    "state": 0,
+    "result": {
+      "uuid": "c9e7f4a3-0d5f-6b12-c3a4-5e6f7a8b9c0d",
+      "name": "Monthly Pro Subscription",
+      "amount": "9.99",
+      "currency": "USD",
+      "payer_currency": "USDT",
+      "payer_amount": "9.99",
+      "period": "monthly",
+      "status": "wait_accept",
+      "url": "https://pay.cryptomus.com/recurrence/c9e7f4a3-0d5f-6b12-c3a4-5e6f7a8b9c0d",
+      "last_pay_off": null
+    }
+  }
+}
