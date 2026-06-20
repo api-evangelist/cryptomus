@@ -1,6 +1,6 @@
 name: Cryptomus
 description: Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -15,7 +15,7 @@ tags:
 apis:
   - name: Cryptomus Merchant Payment API
     description: REST API for accepting cryptocurrency payments, creating invoices, managing static wallets, processing refunds, and handling payment webhooks for merchant integrations.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://doc.cryptomus.com/
     baseURL: https://api.cryptomus.com/v1
     tags:
@@ -38,7 +38,7 @@ apis:
         email: ''
   - name: Cryptomus Payout API
     description: REST API for creating cryptocurrency payouts, processing mass withdrawals, and transferring funds between personal and business wallets with support for auto-conversion.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://doc.cryptomus.com/
     baseURL: https://api.cryptomus.com/v1
     tags:
@@ -58,7 +58,7 @@ apis:
         email: ''
   - name: Cryptomus Recurring Payments API
     description: REST API for creating and managing recurring cryptocurrency payment subscriptions with configurable billing periods (weekly, monthly, quarterly) and discount periods.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://doc.cryptomus.com/
     baseURL: https://api.cryptomus.com/v1
     tags:
@@ -79,7 +79,7 @@ apis:
         email: ''
   - name: Cryptomus Exchange and Market Data API
     description: REST and WebSocket API for accessing real-time cryptocurrency exchange rates, order books, tickers, trade history, market cap data, and executing spot exchange orders with conversion calculations.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://doc.cryptomus.com/
     baseURL: https://api.cryptomus.com/v2
     tags:
