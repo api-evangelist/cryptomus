@@ -30,7 +30,7 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/openapi/openapi.yml
       - type: JSONSchema
         url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
-      - type: Example
+      - type: Examples
         url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
     contact:
       - FN: Cryptomus Support
@@ -50,7 +50,7 @@ apis:
         url: https://doc.cryptomus.com/
       - type: JSONSchema
         url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payout.json
-      - type: Example
+      - type: Examples
         url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-payout.json
     contact:
       - FN: Cryptomus Support
@@ -71,7 +71,7 @@ apis:
         url: https://doc.cryptomus.com/
       - type: JSONSchema
         url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/recurring.json
-      - type: Example
+      - type: Examples
         url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-recurring.json
     contact:
       - FN: Cryptomus Support
@@ -100,7 +100,7 @@ common:
     url: https://doc.cryptomus.com/merchant-api/getting-api-keys
   - type: Request Format
     url: https://doc.cryptomus.com/merchant-api/request-format
-  - type: Webhook
+  - type: Webhooks
     url: https://doc.cryptomus.com/merchant-api/payments/webhook
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/plans/plans.yml
@@ -114,7 +114,7 @@ common:
     url: https://cryptomus.com/
   - type: Fees
     url: https://cryptomus.com/fees/payment
-  - type: SDK
+  - type: SDKs
     url: https://doc.cryptomus.com/
   - type: PrivacyPolicy
     url: https://cryptomus.com/privacy
