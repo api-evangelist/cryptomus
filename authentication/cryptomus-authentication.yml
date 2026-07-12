@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: MerchantAuth
+  type: apiKey
+  in: header
+  parameter: merchant
+  description: Merchant UUID from personal account settings. All requests also require a `sign`
+    header computed as MD5(base64_encode(request_body) + API_KEY).
+  sources:
+  - openapi/openapi.yml

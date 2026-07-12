@@ -96,6 +96,10 @@ apis:
         url: https://cryptomus.com/
         email: ''
 common:
+  - type: DomainSecurity
+    url: security/cryptomus-domain-security.yml
+  - type: Authentication
+    url: authentication/cryptomus-authentication.yml
   - type: Authentication
     url: https://doc.cryptomus.com/merchant-api/getting-api-keys
   - type: Request Format

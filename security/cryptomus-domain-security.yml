@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: cryptomus.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 14:50:35 2026 GMT
+  hsts: false
+- host: doc.cryptomus.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 14:50:35 2026 GMT
+  hsts: false
+- host: api.cryptomus.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 14:50:35 2026 GMT
+  hsts: false
+domains:
+- domain: cryptomus.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
