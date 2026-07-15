@@ -96,6 +96,8 @@ apis:
         url: https://cryptomus.com/
         email: ''
 common:
+  - type: AgenticAccess
+    url: agentic-access/cryptomus-agentic-access.yml
   - type: DomainSecurity
     url: security/cryptomus-domain-security.yml
   - type: Authentication
