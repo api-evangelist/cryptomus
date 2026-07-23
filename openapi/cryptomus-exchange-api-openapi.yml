@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: Cryptomus Exchange API
+  description: 'Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Cryptomus Support
+    url: https://cryptomus.com/
+  termsOfService: https://cryptomus.com/terms
+  license:
+    name: Proprietary
+    url: https://cryptomus.com/privacy
+servers:
+- url: https://api.cryptomus.com/v1
+  description: Cryptomus API v1 (Merchant & Payout)
+- url: https://api.cryptomus.com/v2
+  description: Cryptomus API v2 (Exchange & Market Data)
+security:
+- MerchantAuth: []
+tags:
+- name: Exchange
+  description: Access exchange rates, trading pairs, and market data
+paths:
+  /user-api/exchange/markets:
+    get:
+      operationId: listTradingPairs
+      summary: List available trading pairs
+      description: Retrieve all available cryptocurrency trading pairs for exchange.
+      tags:
+      - Exchange
+      servers:
+      - url: https://api.cryptomus.com/v2
+      responses:
+        '200':
+          description: Trading pairs list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique trading pair identifier
+                        symbol:
+                          type: string
+                          description: Trading pair symbol in BASE_QUOTE format
+                        baseCurrency:
+                          type: string
+                        quoteCurrency:
+                          type: string
+                        baseMinSize:
+                          type: string
+                        quoteMinSize:
+                          type: string
+                        baseMaxSize:
+                          type: string
+                        quoteMaxSize:
+                          type: string
+                        basePrec:
+                          type: string
+                        quotePrec:
+                          type: string
+        '404':
+          description: Not found
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user-api/exchange/markets/price:
+    get:
+      operationId: getMarketPrice
+      summary: Get current market price
+      description: Retrieve the current market price for a specific trading pair.
+      tags:
+      - Exchange
+      servers:
+      - url: https://api.cryptomus.com/v2
+      parameters:
+      - in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+        description: Trading pair symbol (e.g., TRX_USDT)
+      responses:
+        '200':
+          description: Current market price
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  price:
+                    type: string
+                    description: Current asset price
+        '404':
+          description: Not found
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user-api/exchange/orders/market:
+    post:
+      operationId: createMarketOrder
+      summary: Create a market order
+      description: Execute a market buy or sell order for a cryptocurrency trading pair.
+      tags:
+      - Exchange
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      servers:
+      - url: https://api.cryptomus.com/v2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - market
+              - quantity
+              - direction
+              - value
+              properties:
+                market:
+                  type: string
+                  description: Trading pair (e.g., TRX_USDT)
+                quantity:
+                  type: string
+                  description: Amount in base currency
+                direction:
+                  type: string
+                  enum:
+                  - buy
+                  - sell
+                  description: Order direction
+                value:
+                  type: string
+                  description: Limit price in quote currency
+                client_order_id:
+                  type: string
+                  description: Client-generated unique identifier
+                tag:
+                  type: string
+                  description: Broker tag
+      responses:
+        '200':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order_id:
+                    type: string
+                    description: Successfully created order identifier
+                  state:
+                    type: integer
+                    description: Error code (0 = success)
+                  message:
+                    type: string
+        '404':
+          description: Not found
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+  securitySchemes:
+    MerchantAuth:
+      type: apiKey
+      in: header
+      name: merchant
+      description: 'Merchant UUID from personal account settings. All requests also require a `sign` header computed as MD5(base64_encode(request_body) + API_KEY).
+
+        '

@@ -1,0 +1,339 @@
+openapi: 3.1.0
+info:
+  title: Cryptomus Exchange Recurring Payments API
+  description: 'Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Cryptomus Support
+    url: https://cryptomus.com/
+  termsOfService: https://cryptomus.com/terms
+  license:
+    name: Proprietary
+    url: https://cryptomus.com/privacy
+servers:
+- url: https://api.cryptomus.com/v1
+  description: Cryptomus API v1 (Merchant & Payout)
+- url: https://api.cryptomus.com/v2
+  description: Cryptomus API v2 (Exchange & Market Data)
+security:
+- MerchantAuth: []
+tags:
+- name: Recurring Payments
+  description: Create and manage recurring payment subscriptions
+paths:
+  /recurrence/create:
+    post:
+      operationId: createRecurringPayment
+      summary: Create a recurring payment
+      description: Create a recurring cryptocurrency payment subscription.
+      tags:
+      - Recurring Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - amount
+              - currency
+              - name
+              - period
+              properties:
+                amount:
+                  type: string
+                  description: Payment amount
+                currency:
+                  type: string
+                  description: Currency code
+                name:
+                  type: string
+                  minLength: 3
+                  maxLength: 60
+                  description: Subscription name
+                period:
+                  type: string
+                  enum:
+                  - weekly
+                  - monthly
+                  - three_month
+                  description: Billing period
+                to_currency:
+                  type: string
+                  description: Target cryptocurrency for conversion
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 100
+                  description: Merchant order identifier
+                url_callback:
+                  type: string
+                  format: uri
+                  description: Webhook endpoint for status updates
+                discount_days:
+                  type: integer
+                  minimum: 1
+                  maximum: 365
+                  description: Introductory discount period in days
+                discount_amount:
+                  type: string
+                  description: Discount amount in specified currency
+                additional_data:
+                  type: string
+                  description: Extra payment details
+      responses:
+        '200':
+          description: Recurring payment created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    $ref: '#/components/schemas/RecurringObject'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /recurrence/info:
+    post:
+      operationId: getRecurringPaymentInfo
+      summary: Get recurring payment information
+      description: Retrieve details of a specific recurring payment.
+      tags:
+      - Recurring Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  format: uuid
+                  description: Recurring payment UUID
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 128
+                  description: Order ID (takes precedence if both provided)
+      responses:
+        '200':
+          description: Recurring payment information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    $ref: '#/components/schemas/RecurringObject'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /recurrence/list:
+    post:
+      operationId: listRecurringPayments
+      summary: List recurring payments
+      description: Retrieve a paginated list of recurring payments.
+      tags:
+      - Recurring Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        schema:
+          type: string
+        description: Pagination cursor
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Recurring payments list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RecurringObject'
+                      paginate:
+                        $ref: '#/components/schemas/PaginateResult'
+  /recurrence/cancel:
+    post:
+      operationId: cancelRecurringPayment
+      summary: Cancel a recurring payment
+      description: Cancel an active recurring payment subscription.
+      tags:
+      - Recurring Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  format: uuid
+                  description: Recurring payment UUID
+                order_id:
+                  type: string
+                  description: Order ID (takes precedence if both provided)
+      responses:
+        '200':
+          description: Recurring payment cancelled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    $ref: '#/components/schemas/RecurringObject'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PaginateResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items on the current page
+        hasPages:
+          type: boolean
+          description: Whether multiple pages exist
+        nextCursor:
+          type: string
+          nullable: true
+          description: Cursor for the next page
+        previousCursor:
+          type: string
+          nullable: true
+          description: Cursor for the previous page
+        perPage:
+          type: integer
+          description: Maximum items per page
+    RecurringObject:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        order_id:
+          type: string
+          nullable: true
+        amount:
+          type: string
+        currency:
+          type: string
+        payer_currency:
+          type: string
+        payer_amount:
+          type: string
+        payer_amount_usd:
+          type: string
+        url_callback:
+          type: string
+          nullable: true
+          format: uri
+        discount_days:
+          type: string
+        discount_amount:
+          type: string
+        end_of_discount:
+          type: string
+          nullable: true
+        period:
+          type: string
+          enum:
+          - weekly
+          - monthly
+          - three_month
+        status:
+          type: string
+          enum:
+          - wait_accept
+          - active
+          - cancel_by_merchant
+          - cancel_by_user
+        url:
+          type: string
+          format: uri
+        last_pay_off:
+          type: string
+          nullable: true
+  securitySchemes:
+    MerchantAuth:
+      type: apiKey
+      in: header
+      name: merchant
+      description: 'Merchant UUID from personal account settings. All requests also require a `sign` header computed as MD5(base64_encode(request_body) + API_KEY).
+
+        '

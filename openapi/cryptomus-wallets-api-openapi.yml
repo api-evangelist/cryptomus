@@ -1,0 +1,229 @@
+openapi: 3.1.0
+info:
+  title: Cryptomus Exchange Wallets API
+  description: 'Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Cryptomus Support
+    url: https://cryptomus.com/
+  termsOfService: https://cryptomus.com/terms
+  license:
+    name: Proprietary
+    url: https://cryptomus.com/privacy
+servers:
+- url: https://api.cryptomus.com/v1
+  description: Cryptomus API v1 (Merchant & Payout)
+- url: https://api.cryptomus.com/v2
+  description: Cryptomus API v2 (Exchange & Market Data)
+security:
+- MerchantAuth: []
+tags:
+- name: Wallets
+  description: Create and manage static cryptocurrency wallets
+paths:
+  /wallet:
+    post:
+      operationId: createStaticWallet
+      summary: Create a static wallet
+      description: Create a static cryptocurrency wallet for receiving repeated payments.
+      tags:
+      - Wallets
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - currency
+              - network
+              - order_id
+              properties:
+                currency:
+                  type: string
+                  description: Currency code
+                network:
+                  type: string
+                  description: Blockchain network code
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 100
+                  description: Unique identifier in merchant system
+                url_callback:
+                  type: string
+                  minLength: 6
+                  maxLength: 255
+                  description: Webhook URL for wallet top-ups
+                from_referral_code:
+                  type: string
+                  description: Referral code for merchant attribution
+      responses:
+        '200':
+          description: Static wallet created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      wallet_uuid:
+                        type: string
+                        format: uuid
+                      uuid:
+                        type: string
+                        format: uuid
+                      address:
+                        type: string
+                      network:
+                        type: string
+                      currency:
+                        type: string
+                      url:
+                        type: string
+                        format: uri
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /wallet/qr:
+    post:
+      operationId: getWalletQrCode
+      summary: Generate static wallet QR code
+      description: Generate a QR code image for a static wallet address.
+      tags:
+      - Wallets
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - wallet_address_uuid
+              properties:
+                wallet_address_uuid:
+                  type: string
+                  format: uuid
+                  description: Unique identifier for the static wallet
+      responses:
+        '200':
+          description: QR code image returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                        description: Base64 encoded QR code image
+  /wallet/block-address:
+    post:
+      operationId: blockStaticWallet
+      summary: Block a static wallet
+      description: Block a static wallet from receiving further payments.
+      tags:
+      - Wallets
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  format: uuid
+                  description: Static wallet identifier
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 32
+                  description: Order ID (takes precedence if both provided)
+                is_force_refund:
+                  type: boolean
+                  default: false
+                  description: If true, refund incoming payments to sender addresses
+      responses:
+        '200':
+          description: Wallet blocked
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      uuid:
+                        type: string
+                        format: uuid
+                      status:
+                        type: string
+                        enum:
+                        - blocked
+                        - active
+                        - in_active
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+  securitySchemes:
+    MerchantAuth:
+      type: apiKey
+      in: header
+      name: merchant
+      description: 'Merchant UUID from personal account settings. All requests also require a `sign` header computed as MD5(base64_encode(request_body) + API_KEY).
+
+        '

@@ -1,0 +1,351 @@
+openapi: 3.1.0
+info:
+  title: Cryptomus Exchange Payouts API
+  description: 'Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Cryptomus Support
+    url: https://cryptomus.com/
+  termsOfService: https://cryptomus.com/terms
+  license:
+    name: Proprietary
+    url: https://cryptomus.com/privacy
+servers:
+- url: https://api.cryptomus.com/v1
+  description: Cryptomus API v1 (Merchant & Payout)
+- url: https://api.cryptomus.com/v2
+  description: Cryptomus API v2 (Exchange & Market Data)
+security:
+- MerchantAuth: []
+tags:
+- name: Payouts
+  description: Create and manage cryptocurrency payouts
+paths:
+  /payout:
+    post:
+      operationId: createPayout
+      summary: Create a payout
+      description: Create a cryptocurrency payout to an external wallet address.
+      tags:
+      - Payouts
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - amount
+              - currency
+              - order_id
+              - address
+              - is_subtract
+              properties:
+                amount:
+                  type: string
+                  description: Payout amount
+                currency:
+                  type: string
+                  description: Currency code (fiat or crypto)
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 100
+                  description: Unique merchant order identifier
+                address:
+                  type: string
+                  description: Recipient wallet address
+                is_subtract:
+                  type: boolean
+                  description: If true, deduct fee from balance; if false, deduct from payout amount
+                network:
+                  type: string
+                  description: Blockchain network code (required for multi-network cryptos)
+                to_currency:
+                  type: string
+                  description: Target cryptocurrency (required when currency is fiat)
+                from_currency:
+                  type: string
+                  description: Source balance for conversion (USDT only)
+                url_callback:
+                  type: string
+                  description: Webhook URL for status updates
+                course_source:
+                  type: string
+                  enum:
+                  - Binance
+                  - BinanceP2p
+                  - Exmo
+                  - Kucoin
+                  description: Exchange rate source
+                priority:
+                  type: string
+                  enum:
+                  - recommended
+                  - economy
+                  - high
+                  - highest
+                  description: Withdrawal priority
+                memo:
+                  type: string
+                  minLength: 1
+                  maxLength: 30
+                  description: TON-specific identifier
+      responses:
+        '200':
+          description: Payout created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    $ref: '#/components/schemas/PayoutObject'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /payout/info:
+    post:
+      operationId: getPayoutInfo
+      summary: Get payout information
+      description: Retrieve details of a specific payout.
+      tags:
+      - Payouts
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  format: uuid
+                  description: Payout UUID
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 32
+                  description: Payout order ID (takes precedence if both provided)
+      responses:
+        '200':
+          description: Payout information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    $ref: '#/components/schemas/PayoutObject'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /payout/list:
+    post:
+      operationId: listPayouts
+      summary: List payout history
+      description: Retrieve a paginated list of payouts with optional date filters.
+      tags:
+      - Payouts
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date_from:
+                  type: string
+                  description: Filter from date (YYYY-MM-DD H:mm:ss)
+                date_to:
+                  type: string
+                  description: Filter to date (YYYY-MM-DD H:mm:ss)
+      responses:
+        '200':
+          description: Payout list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PayoutObject'
+                      paginate:
+                        $ref: '#/components/schemas/PaginateResult'
+  /payout/services:
+    post:
+      operationId: listPayoutServices
+      summary: List available payout services
+      description: Retrieve available payout networks and currencies with limits and commissions.
+      tags:
+      - Payouts
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Payout services list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceItem'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PaginateResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items on the current page
+        hasPages:
+          type: boolean
+          description: Whether multiple pages exist
+        nextCursor:
+          type: string
+          nullable: true
+          description: Cursor for the next page
+        previousCursor:
+          type: string
+          nullable: true
+          description: Cursor for the previous page
+        perPage:
+          type: integer
+          description: Maximum items per page
+    ServiceItem:
+      type: object
+      properties:
+        network:
+          type: string
+        currency:
+          type: string
+        is_available:
+          type: boolean
+        limit:
+          type: object
+          properties:
+            min_amount:
+              type: string
+            max_amount:
+              type: string
+        commission:
+          type: object
+          properties:
+            fee_amount:
+              type: string
+            percent:
+              type: string
+    PayoutObject:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        amount:
+          type: string
+        currency:
+          type: string
+        network:
+          type: string
+        address:
+          type: string
+        txid:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+          - process
+          - check
+          - paid
+          - fail
+          - cancel
+          - system_fail
+        is_final:
+          type: boolean
+        balance:
+          type: number
+        payer_currency:
+          type: string
+        payer_amount:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    MerchantAuth:
+      type: apiKey
+      in: header
+      name: merchant
+      description: 'Merchant UUID from personal account settings. All requests also require a `sign` header computed as MD5(base64_encode(request_body) + API_KEY).
+
+        '

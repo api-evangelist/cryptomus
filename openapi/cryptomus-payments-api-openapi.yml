@@ -1,0 +1,558 @@
+openapi: 3.1.0
+info:
+  title: Cryptomus Exchange Payments API
+  description: 'Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Cryptomus Support
+    url: https://cryptomus.com/
+  termsOfService: https://cryptomus.com/terms
+  license:
+    name: Proprietary
+    url: https://cryptomus.com/privacy
+servers:
+- url: https://api.cryptomus.com/v1
+  description: Cryptomus API v1 (Merchant & Payout)
+- url: https://api.cryptomus.com/v2
+  description: Cryptomus API v2 (Exchange & Market Data)
+security:
+- MerchantAuth: []
+tags:
+- name: Payments
+  description: Create and manage payment invoices for merchant integrations
+paths:
+  /payment:
+    post:
+      operationId: createInvoice
+      summary: Create a payment invoice
+      description: Creates a cryptocurrency payment invoice for merchant integrations.
+      tags:
+      - Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+        description: MD5(base64_encode(body) + API_KEY)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - amount
+              - currency
+              - order_id
+              properties:
+                amount:
+                  type: string
+                  description: Payment amount (e.g., "10.28")
+                currency:
+                  type: string
+                  description: Currency code
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 128
+                  description: Unique merchant order ID (alphanumeric, dashes, underscores)
+                network:
+                  type: string
+                  description: Blockchain network code
+                url_return:
+                  type: string
+                  minLength: 6
+                  maxLength: 255
+                  description: Return URL after payment
+                url_success:
+                  type: string
+                  minLength: 6
+                  maxLength: 255
+                  description: Success redirect URL
+                url_callback:
+                  type: string
+                  minLength: 6
+                  maxLength: 255
+                  description: Webhook URL for payment status notifications
+                is_payment_multiple:
+                  type: boolean
+                  default: true
+                  description: Allow multiple payments for the same invoice
+                lifetime:
+                  type: integer
+                  minimum: 300
+                  maximum: 43200
+                  default: 3600
+                  description: Invoice lifespan in seconds
+                to_currency:
+                  type: string
+                  description: Target cryptocurrency for conversion
+                subtract:
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+                  default: 0
+                  description: Commission percentage deducted from payment amount
+                accuracy_payment_percent:
+                  type: number
+                  minimum: 0
+                  maximum: 5
+                  default: 0
+                  description: Accepted payment tolerance percentage
+                additional_data:
+                  type: string
+                  maxLength: 255
+                  description: Internal notes
+                currencies:
+                  type: array
+                  items:
+                    type: string
+                  description: Allowed payment currencies
+                except_currencies:
+                  type: array
+                  items:
+                    type: string
+                  description: Excluded payment currencies
+                course_source:
+                  type: string
+                  enum:
+                  - Binance
+                  - BinanceP2P
+                  - Exmo
+                  - Kucoin
+                  description: Exchange rate source
+                from_referral_code:
+                  type: string
+                  description: Referral connection code
+                discount_percent:
+                  type: integer
+                  minimum: -99
+                  maximum: 100
+                  description: Discount (-) or commission (+) percentage applied
+                is_refresh:
+                  type: boolean
+                  default: false
+                  description: Refresh an expired invoice
+      responses:
+        '200':
+          description: Invoice created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    $ref: '#/components/schemas/PaymentObject'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /payment/info:
+    post:
+      operationId: getPaymentInfo
+      summary: Get payment information
+      description: Retrieve details of a specific payment invoice.
+      tags:
+      - Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  format: uuid
+                  description: Invoice UUID
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 128
+                  description: Invoice order ID (takes precedence if both provided)
+      responses:
+        '200':
+          description: Payment information retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    $ref: '#/components/schemas/PaymentObject'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /payment/list:
+    post:
+      operationId: listPayments
+      summary: List payment history
+      description: Retrieve a paginated list of payment invoices with optional date filters.
+      tags:
+      - Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date_from:
+                  type: string
+                  description: Filter from date (YYYY-MM-DD H:mm:ss)
+                date_to:
+                  type: string
+                  description: Filter to date (YYYY-MM-DD H:mm:ss)
+                cursor:
+                  type: string
+                  description: Pagination cursor
+      responses:
+        '200':
+          description: Payment list retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PaymentObject'
+                      paginate:
+                        $ref: '#/components/schemas/PaginateResult'
+  /payment/services:
+    post:
+      operationId: listPaymentServices
+      summary: List available payment services
+      description: Retrieve available payment networks and currencies with limits and commissions.
+      tags:
+      - Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Payment services list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceItem'
+  /payment/refund:
+    post:
+      operationId: refundPayment
+      summary: Refund a payment
+      description: Issue a refund for a completed payment to a specified address.
+      tags:
+      - Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - address
+              - is_subtract
+              properties:
+                uuid:
+                  type: string
+                  format: uuid
+                  description: Invoice UUID
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 128
+                  description: Invoice order ID
+                address:
+                  type: string
+                  description: Wallet address to refund to
+                is_subtract:
+                  type: boolean
+                  description: If true, deduct commission from merchant balance; if false, reduce refund amount
+      responses:
+        '200':
+          description: Refund initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: array
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /payment/mark-as-paid:
+    post:
+      operationId: markPaymentAsPaid
+      summary: Mark payment as paid
+      description: Manually mark an invoice as paid (test/internal use).
+      tags:
+      - Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  format: uuid
+                order_id:
+                  type: string
+      responses:
+        '200':
+          description: Payment marked as paid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+  /payment/qr:
+    post:
+      operationId: getInvoiceQrCode
+      summary: Generate invoice QR code
+      description: Generate a QR code image for a payment invoice.
+      tags:
+      - Payments
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - merchant_payment_uuid
+              properties:
+                merchant_payment_uuid:
+                  type: string
+                  format: uuid
+                  description: Invoice identifier
+      responses:
+        '200':
+          description: QR code image returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                        description: Base64 encoded QR code image
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PaginateResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items on the current page
+        hasPages:
+          type: boolean
+          description: Whether multiple pages exist
+        nextCursor:
+          type: string
+          nullable: true
+          description: Cursor for the next page
+        previousCursor:
+          type: string
+          nullable: true
+          description: Cursor for the previous page
+        perPage:
+          type: integer
+          description: Maximum items per page
+    PaymentObject:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        order_id:
+          type: string
+        amount:
+          type: string
+        payment_amount:
+          type: string
+          nullable: true
+        payer_amount:
+          type: string
+          nullable: true
+        discount_percent:
+          type: integer
+          nullable: true
+        discount:
+          type: string
+        payer_currency:
+          type: string
+          nullable: true
+        currency:
+          type: string
+        merchant_amount:
+          type: string
+          nullable: true
+        network:
+          type: string
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        from:
+          type: string
+          nullable: true
+        txid:
+          type: string
+          nullable: true
+        payment_status:
+          type: string
+          enum:
+          - process
+          - check
+          - paid
+          - paid_over
+          - fail
+          - wrong_amount
+          - cancel
+          - system_fail
+          - refund_process
+          - refund_fail
+          - refund_paid
+        url:
+          type: string
+          format: uri
+        expired_at:
+          type: integer
+          description: Unix timestamp of expiry
+        is_final:
+          type: boolean
+        additional_data:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ServiceItem:
+      type: object
+      properties:
+        network:
+          type: string
+        currency:
+          type: string
+        is_available:
+          type: boolean
+        limit:
+          type: object
+          properties:
+            min_amount:
+              type: string
+            max_amount:
+              type: string
+        commission:
+          type: object
+          properties:
+            fee_amount:
+              type: string
+            percent:
+              type: string
+  securitySchemes:
+    MerchantAuth:
+      type: apiKey
+      in: header
+      name: merchant
+      description: 'Merchant UUID from personal account settings. All requests also require a `sign` header computed as MD5(base64_encode(request_body) + API_KEY).
+
+        '

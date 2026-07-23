@@ -1,0 +1,232 @@
+openapi: 3.1.0
+info:
+  title: Cryptomus Exchange Webhooks API
+  description: 'Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Cryptomus Support
+    url: https://cryptomus.com/
+  termsOfService: https://cryptomus.com/terms
+  license:
+    name: Proprietary
+    url: https://cryptomus.com/privacy
+servers:
+- url: https://api.cryptomus.com/v1
+  description: Cryptomus API v1 (Merchant & Payout)
+- url: https://api.cryptomus.com/v2
+  description: Cryptomus API v2 (Exchange & Market Data)
+security:
+- MerchantAuth: []
+tags:
+- name: Webhooks
+  description: Test and manage webhook notifications
+paths:
+  /test-webhook/payment:
+    post:
+      operationId: testPaymentWebhook
+      summary: Test payment webhook
+      description: Send a test webhook notification to verify your callback endpoint.
+      tags:
+      - Webhooks
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url_callback
+              - currency
+              - network
+              properties:
+                url_callback:
+                  type: string
+                  minLength: 6
+                  maxLength: 150
+                  description: Webhook destination URL
+                currency:
+                  type: string
+                  description: Invoice currency code
+                network:
+                  type: string
+                  description: Invoice network code
+                uuid:
+                  type: string
+                  format: uuid
+                  description: Invoice identifier (random if omitted)
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 32
+                  description: Invoice order ID (random if omitted)
+                status:
+                  type: string
+                  default: paid
+                  enum:
+                  - process
+                  - check
+                  - paid
+                  - paid_over
+                  - fail
+                  - wrong_amount
+                  - cancel
+                  - system_fail
+                  - refund_process
+                  - refund_fail
+                  - refund_paid
+      responses:
+        '200':
+          description: Test webhook sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: array
+  /test-webhook/payout:
+    post:
+      operationId: testPayoutWebhook
+      summary: Test payout webhook
+      description: Send a test payout webhook notification to verify your callback endpoint.
+      tags:
+      - Webhooks
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url_callback
+              - currency
+              - network
+              properties:
+                url_callback:
+                  type: string
+                  minLength: 6
+                  maxLength: 150
+                currency:
+                  type: string
+                network:
+                  type: string
+                uuid:
+                  type: string
+                  format: uuid
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 32
+                status:
+                  type: string
+                  default: paid
+                  enum:
+                  - process
+                  - check
+                  - paid
+                  - fail
+                  - cancel
+                  - system_fail
+      responses:
+        '200':
+          description: Test webhook sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: array
+  /test-webhook/wallet:
+    post:
+      operationId: testWalletWebhook
+      summary: Test wallet webhook
+      description: Send a test wallet top-up webhook notification.
+      tags:
+      - Webhooks
+      parameters:
+      - in: header
+        name: sign
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url_callback
+              - currency
+              - network
+              properties:
+                url_callback:
+                  type: string
+                  minLength: 6
+                  maxLength: 150
+                currency:
+                  type: string
+                network:
+                  type: string
+                uuid:
+                  type: string
+                  format: uuid
+                order_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 32
+                status:
+                  type: string
+                  default: paid
+                  enum:
+                  - process
+                  - check
+                  - paid
+                  - paid_over
+                  - fail
+                  - wrong_amount
+                  - cancel
+                  - system_fail
+                  - refund_process
+                  - refund_fail
+                  - refund_paid
+      responses:
+        '200':
+          description: Test webhook sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: integer
+                  result:
+                    type: array
+components:
+  securitySchemes:
+    MerchantAuth:
+      type: apiKey
+      in: header
+      name: merchant
+      description: 'Merchant UUID from personal account settings. All requests also require a `sign` header computed as MD5(base64_encode(request_body) + API_KEY).
+
+        '
