@@ -1,6 +1,19 @@
 name: Cryptomus
 description: Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cryptomus.png
 url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -13,88 +26,183 @@ tags:
   - Exchange Rates
   - Crypto Gateway
 apis:
-  - name: Cryptomus Merchant Payment API
-    description: REST API for accepting cryptocurrency payments, creating invoices, managing static wallets, processing refunds, and handling payment webhooks for merchant integrations.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://doc.cryptomus.com/
-    baseURL: https://api.cryptomus.com/v1
-    tags:
-      - Payments
-      - Invoices
-      - Webhooks
-      - Cryptocurrency
-    properties:
-      - type: Documentation
-        url: https://doc.cryptomus.com/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/openapi/openapi.yml
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
-      - type: Examples
-        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
-    contact:
-      - FN: Cryptomus Support
-        url: https://cryptomus.com/
-        email: ''
-  - name: Cryptomus Payout API
-    description: REST API for creating cryptocurrency payouts, processing mass withdrawals, and transferring funds between personal and business wallets with support for auto-conversion.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://doc.cryptomus.com/
-    baseURL: https://api.cryptomus.com/v1
-    tags:
-      - Payouts
-      - Withdrawals
-      - Cryptocurrency
-    properties:
-      - type: Documentation
-        url: https://doc.cryptomus.com/
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payout.json
-      - type: Examples
-        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-payout.json
-    contact:
-      - FN: Cryptomus Support
-        url: https://cryptomus.com/
-        email: ''
-  - name: Cryptomus Recurring Payments API
-    description: REST API for creating and managing recurring cryptocurrency payment subscriptions with configurable billing periods (weekly, monthly, quarterly) and discount periods.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://doc.cryptomus.com/
-    baseURL: https://api.cryptomus.com/v1
-    tags:
-      - Recurring Payments
-      - Subscriptions
-      - Billing
-      - Cryptocurrency
-    properties:
-      - type: Documentation
-        url: https://doc.cryptomus.com/
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/recurring.json
-      - type: Examples
-        url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-recurring.json
-    contact:
-      - FN: Cryptomus Support
-        url: https://cryptomus.com/
-        email: ''
-  - name: Cryptomus Exchange and Market Data API
-    description: REST and WebSocket API for accessing real-time cryptocurrency exchange rates, order books, tickers, trade history, market cap data, and executing spot exchange orders with conversion calculations.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://doc.cryptomus.com/
-    baseURL: https://api.cryptomus.com/v2
-    tags:
-      - Exchange Rates
-      - Market Data
-      - Trading
-      - WebSocket
-      - Cryptocurrency
-    properties:
-      - type: Documentation
-        url: https://doc.cryptomus.com/
-    contact:
-      - FN: Cryptomus Support
-        url: https://cryptomus.com/
-        email: ''
+- name: Cryptomus Payout API
+  description: >-
+    REST API for creating cryptocurrency payouts, processing mass withdrawals, and transferring funds
+    between personal and business wallets with support for auto-conversion.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v1
+  tags:
+  - Payouts
+  - Withdrawals
+  - Cryptocurrency
+  properties:
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payout.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-payout.json
+  contact:
+  - FN: Cryptomus Support
+    url: https://cryptomus.com/
+    email: ''
+- name: Cryptomus Recurring Payments API
+  description: >-
+    REST API for creating and managing recurring cryptocurrency payment subscriptions with configurable
+    billing periods (weekly, monthly, quarterly) and discount periods.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v1
+  tags:
+  - Recurring Payments
+  - Subscriptions
+  - Billing
+  - Cryptocurrency
+  properties:
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/recurring.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-recurring.json
+  contact:
+  - FN: Cryptomus Support
+    url: https://cryptomus.com/
+    email: ''
+- name: Cryptomus Exchange and Market Data API
+  description: >-
+    REST and WebSocket API for accessing real-time cryptocurrency exchange rates, order books, tickers,
+    trade history, market cap data, and executing spot exchange orders with conversion calculations.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v2
+  tags:
+  - Exchange Rates
+  - Market Data
+  - Trading
+  - WebSocket
+  - Cryptocurrency
+  properties:
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  contact:
+  - FN: Cryptomus Support
+    url: https://cryptomus.com/
+    email: ''
+- aid: cryptomus:cryptomus-exchange-api
+  name: Cryptomus Exchange API
+  description: Access exchange rates, trading pairs, and market data
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v1
+  tags:
+  - Exchange
+  properties:
+  - type: OpenAPI
+    url: openapi/cryptomus-exchange-api-openapi.yml
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
+- aid: cryptomus:cryptomus-payments-api
+  name: Cryptomus Payments API
+  description: Create and manage payment invoices for merchant integrations
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v1
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/cryptomus-payments-api-openapi.yml
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
+- aid: cryptomus:cryptomus-payouts-api
+  name: Cryptomus Payouts API
+  description: Create and manage cryptocurrency payouts
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v1
+  tags:
+  - Payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/cryptomus-payouts-api-openapi.yml
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
+- aid: cryptomus:cryptomus-recurring-payments-api
+  name: Cryptomus Recurring Payments API
+  description: Create and manage recurring payment subscriptions
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v1
+  tags:
+  - Recurring Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/cryptomus-recurring-payments-api-openapi.yml
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
+- aid: cryptomus:cryptomus-wallets-api
+  name: Cryptomus Wallets API
+  description: Create and manage static cryptocurrency wallets
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v1
+  tags:
+  - Wallets
+  properties:
+  - type: OpenAPI
+    url: openapi/cryptomus-wallets-api-openapi.yml
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
+- aid: cryptomus:cryptomus-webhooks-api
+  name: Cryptomus Webhooks API
+  description: Test and manage webhook notifications
+  humanURL: https://doc.cryptomus.com/
+  baseURL: https://api.cryptomus.com/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/cryptomus-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://doc.cryptomus.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/json-schema/payment.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
 common:
   - type: AgenticAccess
     url: agentic-access/cryptomus-agentic-access.yml
