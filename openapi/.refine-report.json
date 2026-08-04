@@ -1,0 +1,24 @@
+{
+  "provider": "cryptomus",
+  "sources": [
+    "cryptomus-exchange-api-openapi.yml",
+    "cryptomus-payments-api-openapi.yml",
+    "cryptomus-payouts-api-openapi.yml",
+    "cryptomus-recurring-payments-api-openapi.yml",
+    "cryptomus-wallets-api-openapi.yml",
+    "cryptomus-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "cryptomus-exchange-api-openapi.yml",
+    "cryptomus-payments-api-openapi.yml",
+    "cryptomus-payouts-api-openapi.yml",
+    "cryptomus-recurring-payments-api-openapi.yml",
+    "cryptomus-wallets-api-openapi.yml",
+    "cryptomus-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
