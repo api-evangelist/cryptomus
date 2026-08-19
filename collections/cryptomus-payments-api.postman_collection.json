@@ -1,0 +1,1011 @@
+{
+  "item": [
+    {
+      "id": "706695bc-c124-4f45-8d64-39ccd2cd853f",
+      "name": "Payments",
+      "description": {
+        "content": "Create and manage payment invoices for merchant integrations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1bd43655-9072-412b-9cc6-bc9a84c76a28",
+          "name": "Create a payment invoice",
+          "request": {
+            "name": "Create a payment invoice",
+            "description": {
+              "content": "Creates a cryptocurrency payment invoice for merchant integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MD5(base64_encode(body) + API_KEY)",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"network\": \"<string>\",\n  \"url_return\": \"<string>\",\n  \"url_success\": \"<string>\",\n  \"url_callback\": \"<string>\",\n  \"is_payment_multiple\": true,\n  \"lifetime\": 3600,\n  \"to_currency\": \"<string>\",\n  \"subtract\": 0,\n  \"accuracy_payment_percent\": 0,\n  \"additional_data\": \"<string>\",\n  \"currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"except_currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"course_source\": \"<string>\",\n  \"from_referral_code\": \"<string>\",\n  \"discount_percent\": \"<integer>\",\n  \"is_refresh\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "38f89956-a3aa-413e-aa64-b793469aac29",
+              "name": "Invoice created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MD5(base64_encode(body) + API_KEY)",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"network\": \"<string>\",\n  \"url_return\": \"<string>\",\n  \"url_success\": \"<string>\",\n  \"url_callback\": \"<string>\",\n  \"is_payment_multiple\": true,\n  \"lifetime\": 3600,\n  \"to_currency\": \"<string>\",\n  \"subtract\": 0,\n  \"accuracy_payment_percent\": 0,\n  \"additional_data\": \"<string>\",\n  \"currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"except_currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"course_source\": \"<string>\",\n  \"from_referral_code\": \"<string>\",\n  \"discount_percent\": \"<integer>\",\n  \"is_refresh\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 7534,\n  \"result\": {\n    \"uuid\": \"4003f041-fbe2-0e5c-af46-82e70b2d355f\",\n    \"order_id\": \"string\",\n    \"amount\": \"string\",\n    \"payment_amount\": \"string\",\n    \"payer_amount\": \"string\",\n    \"discount_percent\": 2728,\n    \"discount\": \"string\",\n    \"payer_currency\": \"string\",\n    \"currency\": \"string\",\n    \"merchant_amount\": \"string\",\n    \"network\": \"string\",\n    \"address\": \"string\",\n    \"from\": \"string\",\n    \"txid\": \"string\",\n    \"payment_status\": \"wrong_amount\",\n    \"url\": \"http://DPknMscRDHbLvLy.htjxfu7xT43DBQf\",\n    \"expired_at\": 9252,\n    \"is_final\": true,\n    \"additional_data\": \"string\",\n    \"created_at\": \"2013-05-28T01:28:18.161Z\",\n    \"updated_at\": \"1975-06-25T07:52:23.917Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5951af6c-627a-48e8-8f7b-c29128d3c213",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MD5(base64_encode(body) + API_KEY)",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"network\": \"<string>\",\n  \"url_return\": \"<string>\",\n  \"url_success\": \"<string>\",\n  \"url_callback\": \"<string>\",\n  \"is_payment_multiple\": true,\n  \"lifetime\": 3600,\n  \"to_currency\": \"<string>\",\n  \"subtract\": 0,\n  \"accuracy_payment_percent\": 0,\n  \"additional_data\": \"<string>\",\n  \"currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"except_currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"course_source\": \"<string>\",\n  \"from_referral_code\": \"<string>\",\n  \"discount_percent\": \"<integer>\",\n  \"is_refresh\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 5954,\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9ecf799-9f16-4e57-890b-3e08ce8ae7af",
+          "name": "Get payment information",
+          "request": {
+            "name": "Get payment information",
+            "description": {
+              "content": "Retrieve details of a specific payment invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4fe82e55-1518-494e-b4c4-9c313a049c87",
+              "name": "Payment information retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 7534,\n  \"result\": {\n    \"uuid\": \"4003f041-fbe2-0e5c-af46-82e70b2d355f\",\n    \"order_id\": \"string\",\n    \"amount\": \"string\",\n    \"payment_amount\": \"string\",\n    \"payer_amount\": \"string\",\n    \"discount_percent\": 2728,\n    \"discount\": \"string\",\n    \"payer_currency\": \"string\",\n    \"currency\": \"string\",\n    \"merchant_amount\": \"string\",\n    \"network\": \"string\",\n    \"address\": \"string\",\n    \"from\": \"string\",\n    \"txid\": \"string\",\n    \"payment_status\": \"wrong_amount\",\n    \"url\": \"http://DPknMscRDHbLvLy.htjxfu7xT43DBQf\",\n    \"expired_at\": 9252,\n    \"is_final\": true,\n    \"additional_data\": \"string\",\n    \"created_at\": \"2013-05-28T01:28:18.161Z\",\n    \"updated_at\": \"1975-06-25T07:52:23.917Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5816fe38-0199-454b-87b2-d989eef76f7b",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 5954,\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cda24a3e-a112-48a8-af86-786b4398567f",
+          "name": "List payment history",
+          "request": {
+            "name": "List payment history",
+            "description": {
+              "content": "Retrieve a paginated list of payment invoices with optional date filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date_from\": \"<string>\",\n  \"date_to\": \"<string>\",\n  \"cursor\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac076319-38bf-4839-a221-1ec7c671b23f",
+              "name": "Payment list retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date_from\": \"<string>\",\n  \"date_to\": \"<string>\",\n  \"cursor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 4264,\n  \"result\": {\n    \"items\": [\n      {\n        \"uuid\": \"1df42343-1190-2e60-e097-f775642e7e74\",\n        \"order_id\": \"string\",\n        \"amount\": \"string\",\n        \"payment_amount\": \"string\",\n        \"payer_amount\": \"string\",\n        \"discount_percent\": 167,\n        \"discount\": \"string\",\n        \"payer_currency\": \"string\",\n        \"currency\": \"string\",\n        \"merchant_amount\": \"string\",\n        \"network\": \"string\",\n        \"address\": \"string\",\n        \"from\": \"string\",\n        \"txid\": \"string\",\n        \"payment_status\": \"refund_paid\",\n        \"url\": \"https://vYnyEHkYVKiuScFUvWUFfiMuOcmWRIzj.xcqlbgv3HAb\",\n        \"expired_at\": 9967,\n        \"is_final\": false,\n        \"additional_data\": \"string\",\n        \"created_at\": \"2008-04-21T20:31:14.200Z\",\n        \"updated_at\": \"1963-11-17T04:53:12.698Z\"\n      },\n      {\n        \"uuid\": \"1164c7cf-363d-f60b-8bc5-a62ef3a6ed86\",\n        \"order_id\": \"string\",\n        \"amount\": \"string\",\n        \"payment_amount\": \"string\",\n        \"payer_amount\": \"string\",\n        \"discount_percent\": 8443,\n        \"discount\": \"string\",\n        \"payer_currency\": \"string\",\n        \"currency\": \"string\",\n        \"merchant_amount\": \"string\",\n        \"network\": \"string\",\n        \"address\": \"string\",\n        \"from\": \"string\",\n        \"txid\": \"string\",\n        \"payment_status\": \"refund_paid\",\n        \"url\": \"http://EeyddyPGnNmKbLx.itcXcfcxsdXruGRZ5ORuNLRwNMGEwb+nLg-F0GWgSsapliPJFbXBgPKFE7KmtL6smEOq\",\n        \"expired_at\": 8983,\n        \"is_final\": true,\n        \"additional_data\": \"string\",\n        \"created_at\": \"1998-09-24T18:19:50.389Z\",\n        \"updated_at\": \"2021-05-06T20:30:25.868Z\"\n      }\n    ],\n    \"paginate\": {\n      \"count\": 7365,\n      \"hasPages\": true,\n      \"nextCursor\": \"string\",\n      \"previousCursor\": \"string\",\n      \"perPage\": 4958\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e77473cf-885b-47b5-a6c7-59ab108bcce3",
+          "name": "List available payment services",
+          "request": {
+            "name": "List available payment services",
+            "description": {
+              "content": "Retrieve available payment networks and currencies with limits and commissions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbbfc5dc-b7aa-4a27-9062-d82f75c2d018",
+              "name": "Payment services list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 6846,\n  \"result\": [\n    {\n      \"network\": \"string\",\n      \"currency\": \"string\",\n      \"is_available\": false,\n      \"limit\": {\n        \"min_amount\": \"string\",\n        \"max_amount\": \"string\"\n      },\n      \"commission\": {\n        \"fee_amount\": \"string\",\n        \"percent\": \"string\"\n      }\n    },\n    {\n      \"network\": \"string\",\n      \"currency\": \"string\",\n      \"is_available\": true,\n      \"limit\": {\n        \"min_amount\": \"string\",\n        \"max_amount\": \"string\"\n      },\n      \"commission\": {\n        \"fee_amount\": \"string\",\n        \"percent\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "233ed7f7-5835-4be4-8c42-298e4355e39e",
+          "name": "Refund a payment",
+          "request": {
+            "name": "Refund a payment",
+            "description": {
+              "content": "Issue a refund for a completed payment to a specified address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"<string>\",\n  \"is_subtract\": \"<boolean>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2facf0fb-4482-48e0-88dc-eeae22e418f4",
+              "name": "Refund initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"<string>\",\n  \"is_subtract\": \"<boolean>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 4681\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fc9a328-25e6-453a-923d-edfaecfaf813",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"<string>\",\n  \"is_subtract\": \"<boolean>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 5954,\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "840c2047-88e2-47fd-8a73-04febf3088bd",
+          "name": "Mark payment as paid",
+          "request": {
+            "name": "Mark payment as paid",
+            "description": {
+              "content": "Manually mark an invoice as paid (test/internal use).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "mark-as-paid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5844da6-803d-4241-b18b-97e584a71808",
+              "name": "Payment marked as paid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "mark-as-paid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7adbde22-39b9-450e-a26c-1c35cbd98829",
+          "name": "Generate invoice QR code",
+          "request": {
+            "name": "Generate invoice QR code",
+            "description": {
+              "content": "Generate a QR code image for a payment invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "qr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchant_payment_uuid\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2fc01f9-72d6-43d8-b5b6-40ca7e8df0a1",
+              "name": "QR code image returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "qr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchant_payment_uuid\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 988,\n  \"result\": {\n    \"image\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cryptomus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "merchant"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fd84be98-9665-4f99-8fac-becf4c8b0cbf",
+    "name": "Cryptomus Exchange Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.\n\n\nContact Support:\n Name: Cryptomus Support",
+      "type": "text/plain"
+    }
+  }
+}

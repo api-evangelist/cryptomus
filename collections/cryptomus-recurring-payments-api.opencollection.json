@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cryptomus Exchange Recurring Payments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "merchant",
+      "value": "{{merchant}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recurring Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a recurring payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/recurrence/create",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a recurring cryptocurrency payment subscription."
+        },
+        {
+          "info": {
+            "name": "Get recurring payment information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/recurrence/info",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve details of a specific recurring payment."
+        },
+        {
+          "info": {
+            "name": "List recurring payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/recurrence/list",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a paginated list of recurring payments."
+        },
+        {
+          "info": {
+            "name": "Cancel a recurring payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/recurrence/cancel",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an active recurring payment subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

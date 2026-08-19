@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cryptomus Exchange Payments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "merchant",
+      "value": "{{merchant}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a payment invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payment",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a cryptocurrency payment invoice for merchant integrations."
+        },
+        {
+          "info": {
+            "name": "Get payment information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payment/info",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve details of a specific payment invoice."
+        },
+        {
+          "info": {
+            "name": "List payment history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payment/list",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a paginated list of payment invoices with optional date filters."
+        },
+        {
+          "info": {
+            "name": "List available payment services",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payment/services",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve available payment networks and currencies with limits and commissions."
+        },
+        {
+          "info": {
+            "name": "Refund a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payment/refund",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Issue a refund for a completed payment to a specified address."
+        },
+        {
+          "info": {
+            "name": "Mark payment as paid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payment/mark-as-paid",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Manually mark an invoice as paid (test/internal use)."
+        },
+        {
+          "info": {
+            "name": "Generate invoice QR code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payment/qr",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a QR code image for a payment invoice."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cryptomus Exchange Payouts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "merchant",
+      "value": "{{merchant}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payout",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a cryptocurrency payout to an external wallet address."
+        },
+        {
+          "info": {
+            "name": "Get payout information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payout/info",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve details of a specific payout."
+        },
+        {
+          "info": {
+            "name": "List payout history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payout/list",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a paginated list of payouts with optional date filters."
+        },
+        {
+          "info": {
+            "name": "List available payout services",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/payout/services",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve available payout networks and currencies with limits and commissions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cryptomus Exchange Webhooks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "merchant",
+      "value": "{{merchant}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Test payment webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/test-webhook/payment",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a test webhook notification to verify your callback endpoint."
+        },
+        {
+          "info": {
+            "name": "Test payout webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/test-webhook/payout",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a test payout webhook notification to verify your callback endpoint."
+        },
+        {
+          "info": {
+            "name": "Test wallet webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/test-webhook/wallet",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a test wallet top-up webhook notification."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

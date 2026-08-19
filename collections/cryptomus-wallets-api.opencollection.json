@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cryptomus Exchange Wallets API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "merchant",
+      "value": "{{merchant}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a static wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/wallet",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a static cryptocurrency wallet for receiving repeated payments."
+        },
+        {
+          "info": {
+            "name": "Generate static wallet QR code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/wallet/qr",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a QR code image for a static wallet address."
+        },
+        {
+          "info": {
+            "name": "Block a static wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/wallet/block-address",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Block a static wallet from receiving further payments."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

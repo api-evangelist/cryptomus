@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cryptomus Exchange API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "merchant",
+      "value": "{{merchant}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exchange",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available trading pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cryptomus.com/v1/user-api/exchange/markets"
+          },
+          "docs": "Retrieve all available cryptocurrency trading pairs for exchange."
+        },
+        {
+          "info": {
+            "name": "Get current market price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cryptomus.com/v1/user-api/exchange/markets/price",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "Trading pair symbol (e.g., TRX_USDT)"
+              }
+            ]
+          },
+          "docs": "Retrieve the current market price for a specific trading pair."
+        },
+        {
+          "info": {
+            "name": "Create a market order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cryptomus.com/v1/user-api/exchange/orders/market",
+            "headers": [
+              {
+                "name": "sign",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a market buy or sell order for a cryptocurrency trading pair."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,614 @@
+{
+  "item": [
+    {
+      "id": "8cf33373-6600-4da0-886c-2779ba64ca34",
+      "name": "Payouts",
+      "description": {
+        "content": "Create and manage cryptocurrency payouts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0fefa426-e2a5-40e5-952c-14b9c83f0b66",
+          "name": "Create a payout",
+          "request": {
+            "name": "Create a payout",
+            "description": {
+              "content": "Create a cryptocurrency payout to an external wallet address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"address\": \"<string>\",\n  \"is_subtract\": \"<boolean>\",\n  \"network\": \"<string>\",\n  \"to_currency\": \"<string>\",\n  \"from_currency\": \"<string>\",\n  \"url_callback\": \"<string>\",\n  \"course_source\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"memo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6cbc426-70bc-44f2-b555-e727794c7aee",
+              "name": "Payout created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"address\": \"<string>\",\n  \"is_subtract\": \"<boolean>\",\n  \"network\": \"<string>\",\n  \"to_currency\": \"<string>\",\n  \"from_currency\": \"<string>\",\n  \"url_callback\": \"<string>\",\n  \"course_source\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"memo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 1427,\n  \"result\": {\n    \"uuid\": \"9a713cc0-e346-0e0c-b0a0-50d17b298fd9\",\n    \"amount\": \"string\",\n    \"currency\": \"string\",\n    \"network\": \"string\",\n    \"address\": \"string\",\n    \"txid\": \"string\",\n    \"status\": \"process\",\n    \"is_final\": false,\n    \"balance\": 5267.8739447743465,\n    \"payer_currency\": \"string\",\n    \"payer_amount\": \"string\",\n    \"created_at\": \"1961-03-23T22:53:50.775Z\",\n    \"updated_at\": \"1952-04-01T11:53:16.103Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bebd29ca-484b-4b09-b622-9211690fa910",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"address\": \"<string>\",\n  \"is_subtract\": \"<boolean>\",\n  \"network\": \"<string>\",\n  \"to_currency\": \"<string>\",\n  \"from_currency\": \"<string>\",\n  \"url_callback\": \"<string>\",\n  \"course_source\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"memo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 666,\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29e42e27-08d0-42a4-aaec-12582c373b14",
+          "name": "Get payout information",
+          "request": {
+            "name": "Get payout information",
+            "description": {
+              "content": "Retrieve details of a specific payout.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f44fcc32-12d2-4a33-b22a-f78981734eaf",
+              "name": "Payout information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 1427,\n  \"result\": {\n    \"uuid\": \"9a713cc0-e346-0e0c-b0a0-50d17b298fd9\",\n    \"amount\": \"string\",\n    \"currency\": \"string\",\n    \"network\": \"string\",\n    \"address\": \"string\",\n    \"txid\": \"string\",\n    \"status\": \"process\",\n    \"is_final\": false,\n    \"balance\": 5267.8739447743465,\n    \"payer_currency\": \"string\",\n    \"payer_amount\": \"string\",\n    \"created_at\": \"1961-03-23T22:53:50.775Z\",\n    \"updated_at\": \"1952-04-01T11:53:16.103Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4cb5a85-d0bb-42e3-87b3-64bb7848300a",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 666,\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4daaa115-128e-46a4-add5-83e81967bd37",
+          "name": "List payout history",
+          "request": {
+            "name": "List payout history",
+            "description": {
+              "content": "Retrieve a paginated list of payouts with optional date filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date_from\": \"<string>\",\n  \"date_to\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0af9e922-ae34-42e9-9371-b395a5a09fdb",
+              "name": "Payout list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date_from\": \"<string>\",\n  \"date_to\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 6074,\n  \"result\": {\n    \"items\": [\n      {\n        \"uuid\": \"cd6e9320-ab2f-4e33-cccb-99d286ca5140\",\n        \"amount\": \"string\",\n        \"currency\": \"string\",\n        \"network\": \"string\",\n        \"address\": \"string\",\n        \"txid\": \"string\",\n        \"status\": \"cancel\",\n        \"is_final\": true,\n        \"balance\": 1972.927306415042,\n        \"payer_currency\": \"string\",\n        \"payer_amount\": \"string\",\n        \"created_at\": \"1959-07-24T04:33:37.673Z\",\n        \"updated_at\": \"1963-03-18T23:03:20.862Z\"\n      },\n      {\n        \"uuid\": \"f1cfc4b8-300f-dd6b-969e-94155c352cbc\",\n        \"amount\": \"string\",\n        \"currency\": \"string\",\n        \"network\": \"string\",\n        \"address\": \"string\",\n        \"txid\": \"string\",\n        \"status\": \"process\",\n        \"is_final\": true,\n        \"balance\": 4471.560355368341,\n        \"payer_currency\": \"string\",\n        \"payer_amount\": \"string\",\n        \"created_at\": \"1953-08-17T22:26:30.822Z\",\n        \"updated_at\": \"1961-07-14T05:33:15.067Z\"\n      }\n    ],\n    \"paginate\": {\n      \"count\": 6925,\n      \"hasPages\": true,\n      \"nextCursor\": \"string\",\n      \"previousCursor\": \"string\",\n      \"perPage\": 323\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34ced0b5-498f-404a-a044-99f6d5e8221e",
+          "name": "List available payout services",
+          "request": {
+            "name": "List available payout services",
+            "description": {
+              "content": "Retrieve available payout networks and currencies with limits and commissions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4fdcf993-1c23-4544-b7ba-70ddb6418dd7",
+              "name": "Payout services list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 8063,\n  \"result\": [\n    {\n      \"network\": \"string\",\n      \"currency\": \"string\",\n      \"is_available\": true,\n      \"limit\": {\n        \"min_amount\": \"string\",\n        \"max_amount\": \"string\"\n      },\n      \"commission\": {\n        \"fee_amount\": \"string\",\n        \"percent\": \"string\"\n      }\n    },\n    {\n      \"network\": \"string\",\n      \"currency\": \"string\",\n      \"is_available\": true,\n      \"limit\": {\n        \"min_amount\": \"string\",\n        \"max_amount\": \"string\"\n      },\n      \"commission\": {\n        \"fee_amount\": \"string\",\n        \"percent\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cryptomus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "merchant"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6eb54df9-a5bf-47af-a239-375dcada8059",
+    "name": "Cryptomus Exchange Payouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.\n\n\nContact Support:\n Name: Cryptomus Support",
+      "type": "text/plain"
+    }
+  }
+}

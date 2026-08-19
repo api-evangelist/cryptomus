@@ -1,0 +1,388 @@
+{
+  "item": [
+    {
+      "id": "606c31ec-a384-4fe2-8bce-22cbaff2526e",
+      "name": "Webhooks",
+      "description": {
+        "content": "Test and manage webhook notifications",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0174ca1e-b4dd-46c3-b872-41bd902e30f6",
+          "name": "Test payment webhook",
+          "request": {
+            "name": "Test payment webhook",
+            "description": {
+              "content": "Send a test webhook notification to verify your callback endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "test-webhook",
+                "payment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url_callback\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"network\": \"<string>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\",\n  \"status\": \"paid\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf717c22-b87f-4c70-8f59-d8878d5706b5",
+              "name": "Test webhook sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test-webhook",
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url_callback\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"network\": \"<string>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\",\n  \"status\": \"paid\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 3811\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "456a35ff-b0ef-4ade-98ea-932a7af07d5f",
+          "name": "Test payout webhook",
+          "request": {
+            "name": "Test payout webhook",
+            "description": {
+              "content": "Send a test payout webhook notification to verify your callback endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "test-webhook",
+                "payout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url_callback\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"network\": \"<string>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\",\n  \"status\": \"paid\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "861a89d4-002e-4510-8f45-1e063780e47b",
+              "name": "Test webhook sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test-webhook",
+                    "payout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url_callback\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"network\": \"<string>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\",\n  \"status\": \"paid\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 3811\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40264dba-fec8-4a9c-908b-06ebc2f480f1",
+          "name": "Test wallet webhook",
+          "request": {
+            "name": "Test wallet webhook",
+            "description": {
+              "content": "Send a test wallet top-up webhook notification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "test-webhook",
+                "wallet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url_callback\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"network\": \"<string>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\",\n  \"status\": \"paid\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "289a6690-7020-49d2-bcdd-0742b61e802a",
+              "name": "Test webhook sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test-webhook",
+                    "wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url_callback\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"network\": \"<string>\",\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\",\n  \"status\": \"paid\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 3811\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cryptomus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "merchant"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "491653b5-b7f7-4416-85bc-002513076580",
+    "name": "Cryptomus Exchange Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.\n\n\nContact Support:\n Name: Cryptomus Support",
+      "type": "text/plain"
+    }
+  }
+}

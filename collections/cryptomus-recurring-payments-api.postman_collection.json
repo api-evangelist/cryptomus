@@ -1,0 +1,687 @@
+{
+  "item": [
+    {
+      "id": "4984f261-a95c-4c87-8f0d-08420000735c",
+      "name": "Recurring Payments",
+      "description": {
+        "content": "Create and manage recurring payment subscriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2fb95a47-d6e0-4d9c-8aa7-b0cd03a01ff4",
+          "name": "Create a recurring payment",
+          "request": {
+            "name": "Create a recurring payment",
+            "description": {
+              "content": "Create a recurring cryptocurrency payment subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recurrence",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"name\": \"<string>\",\n  \"period\": \"<string>\",\n  \"to_currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"url_callback\": \"<uri>\",\n  \"discount_days\": \"<integer>\",\n  \"discount_amount\": \"<string>\",\n  \"additional_data\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bac66be8-d7fe-4688-8434-7d247ba88e6a",
+              "name": "Recurring payment created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recurrence",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"name\": \"<string>\",\n  \"period\": \"<string>\",\n  \"to_currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"url_callback\": \"<uri>\",\n  \"discount_days\": \"<integer>\",\n  \"discount_amount\": \"<string>\",\n  \"additional_data\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 6187,\n  \"result\": {\n    \"uuid\": \"fd8f16e7-3076-d6d5-411e-4450a3912449\",\n    \"name\": \"string\",\n    \"order_id\": \"string\",\n    \"amount\": \"string\",\n    \"currency\": \"string\",\n    \"payer_currency\": \"string\",\n    \"payer_amount\": \"string\",\n    \"payer_amount_usd\": \"string\",\n    \"url_callback\": \"https://cAEZyujdo.mbzA,TatALHM3tW14gfYs-K62F\",\n    \"discount_days\": \"string\",\n    \"discount_amount\": \"string\",\n    \"end_of_discount\": \"string\",\n    \"period\": \"monthly\",\n    \"status\": \"cancel_by_merchant\",\n    \"url\": \"http://wmyVrsEHgtEjTKEofCLtY.gpmbwBGFXt1nMnkkQZ5cqAPgJuu16tC9RZlW-cYxl-xN4\",\n    \"last_pay_off\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45ca3460-f801-4817-ada1-639dc3edfffe",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recurrence",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"name\": \"<string>\",\n  \"period\": \"<string>\",\n  \"to_currency\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"url_callback\": \"<uri>\",\n  \"discount_days\": \"<integer>\",\n  \"discount_amount\": \"<string>\",\n  \"additional_data\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 9319,\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd8a45d7-478f-4c7f-a2b7-b51e1aaccb9c",
+          "name": "Get recurring payment information",
+          "request": {
+            "name": "Get recurring payment information",
+            "description": {
+              "content": "Retrieve details of a specific recurring payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recurrence",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0054fc77-0b3c-459d-80fc-c66c3bf67159",
+              "name": "Recurring payment information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recurrence",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 6187,\n  \"result\": {\n    \"uuid\": \"fd8f16e7-3076-d6d5-411e-4450a3912449\",\n    \"name\": \"string\",\n    \"order_id\": \"string\",\n    \"amount\": \"string\",\n    \"currency\": \"string\",\n    \"payer_currency\": \"string\",\n    \"payer_amount\": \"string\",\n    \"payer_amount_usd\": \"string\",\n    \"url_callback\": \"https://cAEZyujdo.mbzA,TatALHM3tW14gfYs-K62F\",\n    \"discount_days\": \"string\",\n    \"discount_amount\": \"string\",\n    \"end_of_discount\": \"string\",\n    \"period\": \"monthly\",\n    \"status\": \"cancel_by_merchant\",\n    \"url\": \"http://wmyVrsEHgtEjTKEofCLtY.gpmbwBGFXt1nMnkkQZ5cqAPgJuu16tC9RZlW-cYxl-xN4\",\n    \"last_pay_off\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77ed756b-2d34-4749-be43-8b6a2fb22736",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recurrence",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 9319,\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f928b1b9-d243-4855-bce3-88e4b839ca43",
+          "name": "List recurring payments",
+          "request": {
+            "name": "List recurring payments",
+            "description": {
+              "content": "Retrieve a paginated list of recurring payments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recurrence",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18cc499e-0a5a-458d-a7df-1429351d0cde",
+              "name": "Recurring payments list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recurrence",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 3462,\n  \"result\": {\n    \"items\": [\n      {\n        \"uuid\": \"149c9ec6-5584-eb52-9ee8-68f191c367f1\",\n        \"name\": \"string\",\n        \"order_id\": \"string\",\n        \"amount\": \"string\",\n        \"currency\": \"string\",\n        \"payer_currency\": \"string\",\n        \"payer_amount\": \"string\",\n        \"payer_amount_usd\": \"string\",\n        \"url_callback\": \"http://vNUlFXhmRhhKVUpRfqwFQp.xrN,Y9A.DwL+e,Mt,Yt9rEEy2VEB5mEdatJVhP6K6+G\",\n        \"discount_days\": \"string\",\n        \"discount_amount\": \"string\",\n        \"end_of_discount\": \"string\",\n        \"period\": \"weekly\",\n        \"status\": \"cancel_by_merchant\",\n        \"url\": \"https://wVPDzePQdeejMZxcnTvYksxjlzq.ioqvy9pyGfN-ZScqvjGSbieqdtz8tVdQyzLL\",\n        \"last_pay_off\": \"string\"\n      },\n      {\n        \"uuid\": \"ef3af51a-19c1-fc7e-2be4-a51b75f48bfa\",\n        \"name\": \"string\",\n        \"order_id\": \"string\",\n        \"amount\": \"string\",\n        \"currency\": \"string\",\n        \"payer_currency\": \"string\",\n        \"payer_amount\": \"string\",\n        \"payer_amount_usd\": \"string\",\n        \"url_callback\": \"http://kaMmAlAqgbLQleQqQSY.lusPGuGvp-zqGMnRhPCGnoboo7crqdAu0GmX0YtP-.T4dNuNchHfb-2\",\n        \"discount_days\": \"string\",\n        \"discount_amount\": \"string\",\n        \"end_of_discount\": \"string\",\n        \"period\": \"three_month\",\n        \"status\": \"cancel_by_merchant\",\n        \"url\": \"https://VJleAuWFUOatmq.yvhkKwIE7yPAna6ZFxpWwh7YlBQXdfb8-jpW5vaaJiwajpm1eRwoek24gBIp-lFfz\",\n        \"last_pay_off\": \"string\"\n      }\n    ],\n    \"paginate\": {\n      \"count\": 7684,\n      \"hasPages\": true,\n      \"nextCursor\": \"string\",\n      \"previousCursor\": \"string\",\n      \"perPage\": 4365\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f43f9a7c-8d98-4dbe-aed7-aae169ae54b0",
+          "name": "Cancel a recurring payment",
+          "request": {
+            "name": "Cancel a recurring payment",
+            "description": {
+              "content": "Cancel an active recurring payment subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recurrence",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "sign",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58f6b4a2-8380-416d-9e11-9165f4c32000",
+              "name": "Recurring payment cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recurrence",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 6187,\n  \"result\": {\n    \"uuid\": \"fd8f16e7-3076-d6d5-411e-4450a3912449\",\n    \"name\": \"string\",\n    \"order_id\": \"string\",\n    \"amount\": \"string\",\n    \"currency\": \"string\",\n    \"payer_currency\": \"string\",\n    \"payer_amount\": \"string\",\n    \"payer_amount_usd\": \"string\",\n    \"url_callback\": \"https://cAEZyujdo.mbzA,TatALHM3tW14gfYs-K62F\",\n    \"discount_days\": \"string\",\n    \"discount_amount\": \"string\",\n    \"end_of_discount\": \"string\",\n    \"period\": \"monthly\",\n    \"status\": \"cancel_by_merchant\",\n    \"url\": \"http://wmyVrsEHgtEjTKEofCLtY.gpmbwBGFXt1nMnkkQZ5cqAPgJuu16tC9RZlW-cYxl-xN4\",\n    \"last_pay_off\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae627477-3463-464b-ba96-337dc3743413",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recurrence",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "merchant",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "sign",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": 9319,\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cryptomus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "merchant"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e2b959fb-a33e-4e43-be75-49103d73944b",
+    "name": "Cryptomus Exchange Recurring Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.\n\n\nContact Support:\n Name: Cryptomus Support",
+      "type": "text/plain"
+    }
+  }
+}
