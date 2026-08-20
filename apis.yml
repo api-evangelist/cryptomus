@@ -59,6 +59,11 @@ apis:
   baseURL: https://api.cryptomus.com/v1
   tags:
   - Recurring Payments
+  - Subscription
+  - Billing
+  - Cryptocurrency
+  tags_raw:
+  - Recurring Payments
   - Subscriptions
   - Billing
   - Cryptocurrency
@@ -191,6 +196,8 @@ apis:
   humanURL: https://doc.cryptomus.com/
   baseURL: https://api.cryptomus.com/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
