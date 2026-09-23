@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Cryptomus Exchange Payouts API
-  description: 'Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
-
-    '
+  title: Cryptomus Payouts API
+  description: Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
   version: 1.0.0
   contact:
     name: Cryptomus Support
@@ -244,63 +242,6 @@ paths:
                       $ref: '#/components/schemas/ServiceItem'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        state:
-          type: integer
-          description: Error state code (1 = error)
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-    PaginateResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Number of items on the current page
-        hasPages:
-          type: boolean
-          description: Whether multiple pages exist
-        nextCursor:
-          type: string
-          nullable: true
-          description: Cursor for the next page
-        previousCursor:
-          type: string
-          nullable: true
-          description: Cursor for the previous page
-        perPage:
-          type: integer
-          description: Maximum items per page
-    ServiceItem:
-      type: object
-      properties:
-        network:
-          type: string
-        currency:
-          type: string
-        is_available:
-          type: boolean
-        limit:
-          type: object
-          properties:
-            min_amount:
-              type: string
-            max_amount:
-              type: string
-        commission:
-          type: object
-          properties:
-            fee_amount:
-              type: string
-            percent:
-              type: string
     PayoutObject:
       type: object
       properties:
@@ -341,6 +282,63 @@ components:
         updated_at:
           type: string
           format: date-time
+    ServiceItem:
+      type: object
+      properties:
+        network:
+          type: string
+        currency:
+          type: string
+        is_available:
+          type: boolean
+        limit:
+          type: object
+          properties:
+            min_amount:
+              type: string
+            max_amount:
+              type: string
+        commission:
+          type: object
+          properties:
+            fee_amount:
+              type: string
+            percent:
+              type: string
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PaginateResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items on the current page
+        hasPages:
+          type: boolean
+          description: Whether multiple pages exist
+        nextCursor:
+          type: string
+          nullable: true
+          description: Cursor for the next page
+        previousCursor:
+          type: string
+          nullable: true
+          description: Cursor for the previous page
+        perPage:
+          type: integer
+          description: Maximum items per page
   securitySchemes:
     MerchantAuth:
       type: apiKey

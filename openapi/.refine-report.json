@@ -1,12 +1,7 @@
 {
   "provider": "cryptomus",
   "sources": [
-    "cryptomus-exchange-api-openapi.yml",
-    "cryptomus-payments-api-openapi.yml",
-    "cryptomus-payouts-api-openapi.yml",
-    "cryptomus-recurring-payments-api-openapi.yml",
-    "cryptomus-wallets-api-openapi.yml",
-    "cryptomus-webhooks-api-openapi.yml"
+    "_original/openapi.yml"
   ],
   "outputs": [
     "cryptomus-exchange-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "cryptomus-exchange-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cryptomus-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cryptomus-payouts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cryptomus-recurring-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cryptomus-wallets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cryptomus-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

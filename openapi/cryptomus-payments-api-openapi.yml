@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Cryptomus Exchange Payments API
-  description: 'Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
-
-    '
+  title: Cryptomus Payments API
+  description: Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
   version: 1.0.0
   contact:
     name: Cryptomus Support
@@ -419,40 +417,6 @@ paths:
                         description: Base64 encoded QR code image
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        state:
-          type: integer
-          description: Error state code (1 = error)
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-    PaginateResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Number of items on the current page
-        hasPages:
-          type: boolean
-          description: Whether multiple pages exist
-        nextCursor:
-          type: string
-          nullable: true
-          description: Cursor for the next page
-        previousCursor:
-          type: string
-          nullable: true
-          description: Cursor for the previous page
-        perPage:
-          type: integer
-          description: Maximum items per page
     PaymentObject:
       type: object
       properties:
@@ -548,6 +512,40 @@ components:
               type: string
             percent:
               type: string
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PaginateResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items on the current page
+        hasPages:
+          type: boolean
+          description: Whether multiple pages exist
+        nextCursor:
+          type: string
+          nullable: true
+          description: Cursor for the next page
+        previousCursor:
+          type: string
+          nullable: true
+          description: Cursor for the previous page
+        perPage:
+          type: integer
+          description: Maximum items per page
   securitySchemes:
     MerchantAuth:
       type: apiKey
