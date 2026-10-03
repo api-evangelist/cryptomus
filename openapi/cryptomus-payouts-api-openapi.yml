@@ -242,49 +242,6 @@ paths:
                       $ref: '#/components/schemas/ServiceItem'
 components:
   schemas:
-    ServiceItem:
-      type: object
-      properties:
-        network:
-          type: string
-        currency:
-          type: string
-        is_available:
-          type: boolean
-        limit:
-          type: object
-          properties:
-            min_amount:
-              type: string
-            max_amount:
-              type: string
-        commission:
-          type: object
-          properties:
-            fee_amount:
-              type: string
-            percent:
-              type: string
-    PaginateResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Number of items on the current page
-        hasPages:
-          type: boolean
-          description: Whether multiple pages exist
-        nextCursor:
-          type: string
-          nullable: true
-          description: Cursor for the next page
-        previousCursor:
-          type: string
-          nullable: true
-          description: Cursor for the previous page
-        perPage:
-          type: integer
-          description: Maximum items per page
     ErrorResponse:
       type: object
       properties:
@@ -339,6 +296,49 @@ components:
         updated_at:
           type: string
           format: date-time
+    PaginateResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items on the current page
+        hasPages:
+          type: boolean
+          description: Whether multiple pages exist
+        nextCursor:
+          type: string
+          nullable: true
+          description: Cursor for the next page
+        previousCursor:
+          type: string
+          nullable: true
+          description: Cursor for the previous page
+        perPage:
+          type: integer
+          description: Maximum items per page
+    ServiceItem:
+      type: object
+      properties:
+        network:
+          type: string
+        currency:
+          type: string
+        is_available:
+          type: boolean
+        limit:
+          type: object
+          properties:
+            min_amount:
+              type: string
+            max_amount:
+              type: string
+        commission:
+          type: object
+          properties:
+            fee_amount:
+              type: string
+            percent:
+              type: string
   securitySchemes:
     MerchantAuth:
       type: apiKey

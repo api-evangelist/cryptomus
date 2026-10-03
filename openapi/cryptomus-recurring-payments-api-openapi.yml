@@ -242,6 +242,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
     RecurringObject:
       type: object
       properties:
@@ -313,20 +327,6 @@ components:
         perPage:
           type: integer
           description: Maximum items per page
-    ErrorResponse:
-      type: object
-      properties:
-        state:
-          type: integer
-          description: Error state code (1 = error)
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
   securitySchemes:
     MerchantAuth:
       type: apiKey
