@@ -242,20 +242,6 @@ paths:
                       $ref: '#/components/schemas/ServiceItem'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        state:
-          type: integer
-          description: Error state code (1 = error)
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
     PayoutObject:
       type: object
       properties:
@@ -296,6 +282,20 @@ components:
         updated_at:
           type: string
           format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: integer
+          description: Error state code (1 = error)
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
     PaginateResult:
       type: object
       properties:
