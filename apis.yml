@@ -29,7 +29,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cryptomus.png
 url: https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 tags:
   - Cryptocurrency
@@ -224,6 +224,10 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/cryptomus/refs/heads/main/examples/create-invoice.json
 common:
+  - url: https://cryptomus.com/blog
+    type: Blog
+  - url: https://cryptomus.com/api/generate-feed
+    type: BlogRSS
   - type: AgenticAccess
     url: agentic-access/cryptomus-agentic-access.yml
   - type: DomainSecurity
