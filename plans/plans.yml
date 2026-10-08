@@ -81,3 +81,35 @@ plans:
       trx_apy: '20%'
     notes: >
       APY rates are subject to change. TRX offers the highest currently advertised yield at 20%.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  units: []
+  plans:
+  - name: Standard Merchant
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise / High Volume
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Trading / Exchange
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Staking
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
