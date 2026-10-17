@@ -242,6 +242,26 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    PaginateResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items on the current page
+        hasPages:
+          type: boolean
+          description: Whether multiple pages exist
+        nextCursor:
+          type: string
+          nullable: true
+          description: Cursor for the next page
+        previousCursor:
+          type: string
+          nullable: true
+          description: Cursor for the previous page
+        perPage:
+          type: integer
+          description: Maximum items per page
     ErrorResponse:
       type: object
       properties:
@@ -307,26 +327,6 @@ components:
         last_pay_off:
           type: string
           nullable: true
-    PaginateResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Number of items on the current page
-        hasPages:
-          type: boolean
-          description: Whether multiple pages exist
-        nextCursor:
-          type: string
-          nullable: true
-          description: Cursor for the next page
-        previousCursor:
-          type: string
-          nullable: true
-          description: Cursor for the previous page
-        perPage:
-          type: integer
-          description: Maximum items per page
   securitySchemes:
     MerchantAuth:
       type: apiKey
