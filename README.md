@@ -64,46 +64,158 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Cryptomus is a cryptocurrency payment gateway and ecosystem providing REST APIs for merchants and developers to accept crypto payments, create invoices, process payouts, manage recurring subscriptions, and access real-time exchange rate and market data across 100+ cryptocurrencies.
+Cryptomus is a cryptocurrency payment gateway providing REST APIs for accepting crypto payments, creating invoices, processing payouts, managing recurring billing, and accessing real-time exchange rate and market data across 100+ cryptocurrencies.
 
-## APIs
+**Areas:** Cryptocurrency · Payments · Invoices · Payouts · Exchange Rates · Crypto Gateway
 
-| API | Description | Base URL |
-|-----|-------------|----------|
-| Merchant Payment API | Accept crypto payments, create invoices, manage static wallets | `https://api.cryptomus.com/v1` |
-| Payout API | Process withdrawals, mass payouts, wallet transfers | `https://api.cryptomus.com/v1` |
-| Recurring Payments API | Subscription billing with weekly/monthly/quarterly periods | `https://api.cryptomus.com/v1` |
-| Exchange and Market Data API | Real-time rates, order books, trading, WebSocket streams | `https://api.cryptomus.com/v2` |
+## Cryptomus on APIs.io
 
-## Authentication
+Everything profiled for Cryptomus is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cryptomus/](https://apis.io/providers/cryptomus/)** — or go straight to one of the APIs or properties below.
 
-All Merchant API requests require two HTTP headers:
+### APIs (9)
 
-- `merchant` — your merchant UUID from account settings
-- `sign` — MD5 hash of `base64_encode(request_body) + API_KEY`
+- [Cryptomus Payout API](https://apis.io/apis/cryptomus/cryptomus-payout-api/) — REST API for creating cryptocurrency payouts, processing mass withdrawals, and transferring funds between personal and business wallets with support for…
+- [Cryptomus Recurring Payments API](https://apis.io/apis/cryptomus/cryptomus-recurring-payments-api/) — REST API for creating and managing recurring cryptocurrency payment subscriptions with configurable billing periods (weekly, monthly, quarterly) and…
+- [Cryptomus Exchange and Market Data API](https://apis.io/apis/cryptomus/cryptomus-exchange-and-market-data-api/) — REST and WebSocket API for accessing real-time cryptocurrency exchange rates, order books, tickers, trade history, market cap data, and executing spot…
+- [Cryptomus Exchange API](https://apis.io/apis/cryptomus/cryptomus-exchange-api/) — Access exchange rates, trading pairs, and market data
+- [Cryptomus Payments API](https://apis.io/apis/cryptomus/cryptomus-payments-api/) — Create and manage payment invoices for merchant integrations
+- [Cryptomus Payouts API](https://apis.io/apis/cryptomus/cryptomus-payouts-api/) — Create and manage cryptocurrency payouts
+- [Cryptomus Recurring Payments API](https://apis.io/apis/cryptomus/cryptomus-recurring-payments-api/) — Create and manage recurring payment subscriptions
+- [Cryptomus Wallets API](https://apis.io/apis/cryptomus/cryptomus-wallets-api/) — Create and manage static cryptocurrency wallets
+- [Cryptomus Webhooks API](https://apis.io/apis/cryptomus/cryptomus-webhooks-api/) — Test and manage webhook notifications
 
-Separate API keys are required for payment and payout operations.
+### Published properties
 
-## Key Endpoints
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- `POST /v1/payment` — Create a payment invoice
-- `POST /v1/payout` — Create a payout
-- `POST /v1/recurrence/create` — Create a recurring payment plan
-- `POST /v1/payment/services` — List available payment services
-- `POST /v1/balance` — Get merchant and user wallet balances
-- `POST /v1/transfer/to-business` — Transfer funds to business wallet
-- `POST /v2/user-api/convert/calculate` — Calculate exchange conversion
-- `WSS wss://api-ws.cryptomus.com/ws` — Real-time market data WebSocket
+#### Agentic access (1)
 
-## Fees
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Payment processing: 2% standard, negotiable to 0.4% by volume
-- Trading: from 0.04% (maker/taker tiered model)
-- Auto-convert: Free
-- Internal transfers: Free
+- [Cryptomus Agentic Access](https://apis.io/agentic-access/cryptomus/cryptomus-agentic-access/)
 
-## Resources
+#### JSON Schema (3)
 
-- Documentation: https://doc.cryptomus.com/
-- Fee Schedule: https://cryptomus.com/fees/payment
-- Website: https://cryptomus.com/
+The data models the API reads and writes.
+
+- [Cryptomus Payment Object](https://apis.io/schemas/cryptomus/payment/)
+- [Cryptomus Payout Object](https://apis.io/schemas/cryptomus/payout/)
+- [Cryptomus Recurring Payment Object](https://apis.io/schemas/cryptomus/recurring/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Cryptomus Context](https://apis.io/jsonld/cryptomus/cryptomus/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Create Invoice](https://apis.io/examples/cryptomus/create-invoice/)
+- [Create Payout](https://apis.io/examples/cryptomus/create-payout/)
+- [Create Recurring](https://apis.io/examples/cryptomus/create-recurring/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Cryptomus Exchange API](https://apis.io/collections/cryptomus/open-cryptomus-exchange-api/)
+- [Cryptomus Exchange Payments API](https://apis.io/collections/cryptomus/open-cryptomus-payments-api/)
+- [Cryptomus Exchange Payouts API](https://apis.io/collections/cryptomus/open-cryptomus-payouts-api/)
+- [Cryptomus Exchange Recurring Payments API](https://apis.io/collections/cryptomus/open-cryptomus-recurring-payments-api/)
+- [Cryptomus Exchange Wallets API](https://apis.io/collections/cryptomus/open-cryptomus-wallets-api/)
+- [Cryptomus Exchange Webhooks API](https://apis.io/collections/cryptomus/open-cryptomus-webhooks-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Cryptomus — jsonschema rules](https://apis.io/rules/cryptomus/cryptomus-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cryptomus Authentication](https://apis.io/security/cryptomus/cryptomus-authentication/)
+- [Cryptomus Domain Security](https://apis.io/security/cryptomus/cryptomus-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plans](https://apis.io/plans/cryptomus/plans/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rate Limits](https://apis.io/rate-limits/cryptomus/rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Finops](https://apis.io/finops/cryptomus/finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://cryptomus.com/)
+- [Blog](https://cryptomus.com/blog)
+- [Terms of service](https://cryptomus.com/terms)
+- [Privacy policy](https://cryptomus.com/privacy)
+
+## API Evangelist rating
+
+**Kin Score 32.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 60.2 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 18.4 |
+
+**Agent readiness 32.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 18.8** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cryptomus/](https://apis.io/providers/cryptomus/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cryptomus: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cryptomus/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
